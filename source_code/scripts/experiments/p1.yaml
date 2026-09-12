@@ -1,0 +1,7 @@
+id: p1
+name: SpikePose-P1-SmallInit
+category: training_profile
+parent: p0
+description: Change only the final heatmap output initialization to small normal
+changes:
+  model.head.output_init: small_normal

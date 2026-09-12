@@ -1,0 +1,9 @@
+id: v1
+name: SpikePose-NTU-V1-CausalPoseResidualCorrection
+dataset_scope: ntu_rgbd
+category: video_hpe_solution
+parent: cf10
+description: DCPose-inspired causal correction using aligned historical pose residuals
+changes:
+  model.temporal.aggregation: joint_residual_correction
+  model.temporal.intermediate_loss_weight: 0.0

@@ -1,0 +1,5 @@
+id: ntu25_preview8
+description: Native NTU-25 warm-start preview from completed Pilot20 models.
+experiments:
+  - pilot8_ntu25_framewise
+  - pilot8_ntu25_hrnet_w32

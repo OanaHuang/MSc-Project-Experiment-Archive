@@ -1,0 +1,8 @@
+id: spike_head
+name: SpikePose-SpikeHead
+legacy_reference: H1
+category: head
+parent: stage123
+description: Exact legacy H1 head operating on genuine temporal features
+changes:
+  model.head.kind: spiking_heatmap

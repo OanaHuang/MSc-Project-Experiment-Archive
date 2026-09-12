@@ -1,0 +1,45 @@
+id: confirm140_ntu_mamv2_noalign
+paper_id: Confirm140-NTU-MAMV2-NoAlignment
+stage: paper_ablation
+model_config: s3_sp_a4
+protocol: ntu_cs_mam_ablation_confirm140
+initialization:
+  mode: checkpoint
+  source: confirm140_ntu_spikepose_frame
+  match_seed: true
+  load: spatial_weights_only
+model:
+  temporal:
+    memory_kind: mam_v2_noalign
+    memory_decay_min: 0.02
+    memory_decay_max: 0.95
+    memory_decay: 0.08
+    memory_residual_gamma_init: 0.0
+    memory_use_current_direct_path: true
+    memory_use_residual_offset: false
+    memory_use_dynamic_gate: true
+    memory_use_predictive_head: false
+    memory_shared_decay: false
+    memory_bptt_mode: full16
+training:
+  mam_diagnostic_batches: 1
+  phases:
+    - name: memory_warmup
+      start_epoch: 1
+      end_epoch: 10
+      train_modules: [mam.joint_embedding, mam.gate_head, mam.gamma_parameter]
+      freeze_batch_norm: true
+      learning_rates: {mam.joint_embedding: 0.0002, mam.gate_head: 0.0002, mam.gamma_parameter: 0.0002}
+    - name: partial_finetune
+      start_epoch: 11
+      end_epoch: 140
+      train_modules: [mam.joint_embedding, mam.gate_head, mam.gamma_parameter, neck, head, backbone.downsamples.3, backbone.stages.3]
+      freeze_batch_norm: true
+      learning_rates: {mam.joint_embedding: 0.0002, mam.gate_head: 0.0002, mam.gamma_parameter: 0.0002, neck: 0.00005, head: 0.00005, backbone.downsamples.3: 0.00001, backbone.stages.3: 0.00001}
+  loss_schedule:
+    offset: {start_epoch: 999, weight: 0.0}
+    prediction: {start_epoch: 999, weight: 0.0}
+    velocity: {start_epoch: 999, weight: 0.0}
+    acceleration: {start_epoch: 999, weight: 0.0}
+    magnitude: {start_epoch: 999, weight: 0.0}
+temporal: {video_frames: 16, snn_updates_per_frame: 1, input_mode: stream, state_policy: continuous, readout: last}

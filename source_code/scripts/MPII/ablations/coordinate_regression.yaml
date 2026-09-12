@@ -1,0 +1,6 @@
+id: coordinate_regression
+name: MPII E9 Coordinate Regression Series
+baseline:
+  experiment: resformer_fpn
+  display_id: rg0
+experiments: [rg1, rg2, rg3]

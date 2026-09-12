@@ -1,0 +1,24 @@
+id: all
+title: Complete SpikePose study
+experiments:
+  - baseline
+  - head1x
+  - stage123_clean
+  - stage1
+  - stage12
+  - stage123
+  - add
+  - lif
+  - relu
+  - spike_head
+  - t1
+  - t4
+  - four_stage
+  - mem_ann
+  - mem_spikefpn_annhead
+  - mem_fpn
+  - multiconv_fpn
+  - sew_fpn
+  - resformer_s3
+  - resformer_s4
+  - resformer_fpn

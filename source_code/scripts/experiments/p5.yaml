@@ -1,0 +1,7 @@
+id: p5
+name: SpikePose-P5-ProfileB
+category: training_profile
+parent: p4
+training_profile: residual_bf
+description: Add rotation augmentation to obtain the complete Profile B recipe
+reuse_reference: e0

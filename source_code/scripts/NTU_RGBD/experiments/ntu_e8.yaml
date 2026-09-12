@@ -1,0 +1,9 @@
+id: ntu_e8
+name: SpikePose-NTU-E8-ResFormer-S4
+dataset_scope: ntu_rgbd
+category: external_baselines
+parent: resformer_s4
+description: E8 ResFormer-S4 architecture trained from scratch on the NTU S010 split
+changes:
+  model.num_joints: 25
+

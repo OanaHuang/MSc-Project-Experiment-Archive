@@ -1,0 +1,5 @@
+model:
+  family: pose_resnet
+  depth: 50
+  num_joints: 16
+  input_color: rgb

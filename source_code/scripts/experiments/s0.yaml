@@ -1,0 +1,13 @@
+id: s0
+name: SpikePose-S0-Stage4
+category: stage_fusion
+parent: four_stage
+training_profile: residual_bf
+legacy_reference: null
+description: Fixed four-stage backbone with only Stage 4 enabled in masked additive fusion
+changes:
+  model.backbone.output_stages: [1, 2, 3, 4]
+  model.neck.kind: masked_add
+  model.neck.interpolation: nearest
+  model.neck.align_corners: false
+  model.neck.stage_mask: [0, 0, 0, 1]

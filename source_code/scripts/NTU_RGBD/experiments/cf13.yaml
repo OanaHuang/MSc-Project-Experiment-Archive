@@ -1,0 +1,8 @@
+id: cf13
+name: SpikePose-NTU-CF13-AlignedConfidenceGate
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: cf10
+description: Joint alignment followed by heatmap-confidence temporal weighting
+changes:
+  model.temporal.aggregation: joint_aligned_confidence_temporal

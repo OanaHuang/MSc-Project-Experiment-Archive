@@ -1,0 +1,14 @@
+id: t6
+name: SpikePose-E0-T2-Translate4-Mean
+dataset_scope: mpii
+legacy_reference: E0 synthetic temporal aggregation control
+category: temporal
+parent: e0
+description: E0 with four-pixel translated previous frame and original mean aggregation
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: previous_translate_current
+  model.temporal.aggregation: mean
+  model.temporal.translation_pixels: 4
+  model.temporal.randomize_training: true
+  model.temporal.eval_translation: [4, 0]

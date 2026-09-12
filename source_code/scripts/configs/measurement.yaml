@@ -1,0 +1,7 @@
+version: measurement_v2
+warmup_iterations: 100
+measured_seconds: 60.0
+repeats: 5
+sample_interval_seconds: 0.2
+idle_seconds: 60.0
+maximum_cv: 0.05

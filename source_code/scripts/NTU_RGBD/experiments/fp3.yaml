@@ -1,0 +1,7 @@
+id: fp3
+name: SpikePose-NTU-FP3-JointTemporal
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: t2
+description: Four-frame causal learned per-joint temporal fusion
+changes: {}

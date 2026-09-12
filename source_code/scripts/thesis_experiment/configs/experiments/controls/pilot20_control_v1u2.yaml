@@ -1,0 +1,12 @@
+id: pilot20_control_v1u2
+paper_id: Pilot20-Control-V1U2
+stage: paper_control
+run_type: pilot
+profile: pilot20
+priority: pilot
+action: evaluate_only
+model_config: s3_sp_a4
+protocol: ntu_cs_control_eval
+initialization: {mode: checkpoint, source: mamv2_fullcs_p00_source, match_seed: true, load: spatial_weights_only}
+training: {epochs: 0, seeds: [42]}
+temporal: {video_frames: 1, snn_updates_per_frame: 2, input_mode: repeat_current, state_policy: reset, readout: mean}

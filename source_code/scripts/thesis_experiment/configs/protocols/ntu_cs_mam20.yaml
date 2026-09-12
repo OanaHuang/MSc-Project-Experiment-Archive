@@ -1,0 +1,30 @@
+extends: ntu_cs80
+data:
+  minimum_temporal_history: 15
+training:
+  epochs: 20
+  milestone_epochs: [10, 20]
+  seeds: [42]
+  batch_size: 32
+  clip_batch_size: 8
+  num_workers: 4
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  gradient_accumulation: 1
+  mixed_precision: true
+  deterministic_workers: true
+  target_heatmap_backend: gpu
+  loss_all_frames: true
+  single_pass_validation: true
+  firing_rate_batches: 1
+  progress_interval: 100
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 5
+    min_lr: 0.000001
+  augmentation:
+    scale_range: [0.85, 1.15]
+    rotation_degrees: 15.0
+    flip_probability: 0.5

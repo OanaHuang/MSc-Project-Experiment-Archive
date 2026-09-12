@@ -1,0 +1,11 @@
+id: m1
+name: SpikePose-NTU-M1-FourFrameMean
+dataset_scope: ntu_rgbd
+category: motion_trend
+parent: fp2
+description: Independent per-frame ILIF encoding followed by uniform four-frame fusion
+changes:
+  model.temporal.state_mode: reset
+  model.temporal.decouple_video_time: true
+  model.temporal.snn_steps_per_frame: 1
+  model.temporal.aggregation: mean

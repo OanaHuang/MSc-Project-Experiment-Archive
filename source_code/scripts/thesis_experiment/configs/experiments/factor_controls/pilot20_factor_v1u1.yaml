@@ -1,0 +1,10 @@
+id: pilot20_factor_v1u1
+paper_id: Pilot20-Factor-V1U1
+stage: paper_factor_control
+run_type: pilot
+priority: pilot
+model_config: s3_sp_a4
+protocol: ntu_factor_pilot20
+initialization: {mode: checkpoint, source: pilot20_m_s3_u2, match_seed: true, load: weights_only}
+training: {batch_size: 128, clip_batch_size: 128, gradient_accumulation: 1}
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: scheduled, state_policy: continuous, readout: last, update_schedule: [0]}

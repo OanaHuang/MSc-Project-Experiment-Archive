@@ -1,0 +1,39 @@
+dataset: mpii
+data:
+  images_dir: Datasets/MPII/images
+  train_metadata: Datasets/MPII/metadata/train.jsonl
+  validation_metadata: Datasets/MPII/metadata/val.jsonl
+  head_bone_calibration: Datasets/MPII/metadata/head_bone_calibration.json
+  image_size: 256
+  heatmap_size: 64
+  sigma: 2.0
+  crop_expansion: 1.25
+training:
+  epochs: 210
+  seeds: [42, 365198782, 2071461405]
+  batch_size: 16
+  num_workers: 4
+  optimizer: adamw
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 5.0
+  deterministic_workers: true
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 2
+    min_lr: 0.000001
+  augmentation:
+    scale_range: [0.75, 1.25]
+    rotation_degrees: 30.0
+    flip_probability: 0.5
+selection:
+  metric: official_pckh_0_5
+  mode: max
+evaluation:
+  main_decoder: dark
+  supplementary_decoder: flip_dark
+  thresholds: [0.1, 0.2, 0.5]
+  pck_auc_range: [0.0, 0.5]
+protocol_provenance:
+  source: cosine_scratch_84_04_resolved_config
+  note: Exact recovered optimizer recipe takes precedence over fallback values.

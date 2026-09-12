@@ -1,0 +1,7 @@
+id: resformer_s3
+name: SpikePose-ResFormer-S3
+category: main_route
+parent: mem_fpn
+description: Add spike attention to Stage 3 only
+changes:
+  model.backbone.attention_stages: [3]

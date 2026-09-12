@@ -1,0 +1,7 @@
+id: jts0
+name: SpikePose-NTU-JTS0-T0Reference
+dataset_scope: ntu_rgbd
+category: joint_timestep
+parent: t0
+description: Canonical T0 single-current-frame reference for the joint-aware timestep series
+changes: {}

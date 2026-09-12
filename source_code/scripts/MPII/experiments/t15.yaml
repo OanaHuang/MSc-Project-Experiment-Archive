@@ -1,0 +1,10 @@
+id: t15
+name: SpikePose-E0-T2-HeatmapFeedback
+dataset_scope: mpii
+legacy_reference: E0 heatmap-feedback temporal refinement
+category: temporal
+parent: e0
+description: Feed the first-step pose estimate into residual second-step refinement
+changes:
+  model.temporal.aggregation: heatmap_feedback
+  model.temporal.intermediate_loss_weight: 0.5

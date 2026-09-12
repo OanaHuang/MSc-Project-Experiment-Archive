@@ -1,0 +1,17 @@
+extends: base_spikepose
+model:
+  backbone:
+    channels: [64, 128, 256]
+    depths: [1, 2, 2]
+    blocks: [all_conv, all_conv, conv]
+    output_stages: [2, 3]
+    attention_stages: []
+  neck:
+    kind: concat
+    out_channels: 128
+    interpolation: nearest
+    align_corners: false
+  head:
+    kind: ann_heatmap
+    hidden_channels: 128
+    upsample_factor: 2

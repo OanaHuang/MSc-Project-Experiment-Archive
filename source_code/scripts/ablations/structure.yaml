@@ -1,0 +1,4 @@
+id: structure
+title: Multi-scale structure ablation
+reference: baseline
+experiments: [baseline, stage1, stage12, stage123]

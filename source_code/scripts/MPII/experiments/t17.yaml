@@ -1,0 +1,10 @@
+id: t17
+name: SpikePose-E0-T2-HeatmapFeedback-FinalLoss
+dataset_scope: mpii
+legacy_reference: E0 heatmap-feedback final-supervision control
+category: temporal
+parent: e0
+description: Train heatmap-feedback refinement using only the final prediction loss
+changes:
+  model.temporal.aggregation: heatmap_feedback
+  model.temporal.intermediate_loss_weight: 0.0

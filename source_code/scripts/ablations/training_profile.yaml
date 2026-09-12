@@ -1,0 +1,10 @@
+id: training_profile
+title: P-Series training profile ablation on the fixed B0 architecture
+reference: p0
+experiments:
+  - p0
+  - p1
+  - p2
+  - p3
+  - p4
+  - p5

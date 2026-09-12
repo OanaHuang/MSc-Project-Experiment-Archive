@@ -1,0 +1,4 @@
+id: fusion
+title: Feature fusion ablation
+reference: stage123
+experiments: [stage123, add]

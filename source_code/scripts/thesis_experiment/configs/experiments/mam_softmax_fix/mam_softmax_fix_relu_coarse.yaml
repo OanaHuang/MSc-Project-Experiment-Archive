@@ -1,0 +1,38 @@
+id: mam_softmax_fix_relu_coarse
+paper_id: MAM-Softmax-Fix-relu-coarse-Frozen20
+stage: mam_softmax_fix
+run_type: pilot
+priority: pilot
+model_config: s3_sp_a4
+protocol: mam_softmax_fix_frozen20
+initialization:
+  mode: checkpoint
+  source: mamv2_fullcs_p00_source
+  match_seed: true
+  load: spatial_weights_only
+mam_softmax_fix:
+  method: relu
+  beta: 1.0
+  alpha: 1.0
+  min_mass: 1.0e-8
+  dark_kernel: 11
+temporal:
+  video_frames: 16
+  snn_updates_per_frame: 1
+  input_mode: stream
+  state_policy: continuous
+  readout: last
+model:
+  temporal:
+    memory_kind: mam_v2
+    memory_use_residual_offset: false
+training:
+  phases:
+    - name: frozen_spatial_fusion_only
+      start_epoch: 1
+      end_epoch: 20
+      train_modules: [mam.joint_embedding, mam.gate_head, mam.gamma_parameter]
+      freeze_batch_norm: true
+      learning_rates: {mam.joint_embedding: 0.0002, mam.gate_head: 0.0002, mam.gamma_parameter: 0.0002}
+  loss_schedule:
+    offset: {start_epoch: 1, weight: 0.0}

@@ -1,0 +1,12 @@
+id: t8
+name: SpikePose-E0-T2-Repeat-LearnedHeatmap
+dataset_scope: mpii
+legacy_reference: E0 learned post-head temporal aggregation
+category: temporal
+parent: e0
+description: Apply the shared E0 head per step and learn two global fusion weights
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: repeat
+  model.temporal.aggregation: learned_heatmap
+  model.temporal.translation_pixels: 0

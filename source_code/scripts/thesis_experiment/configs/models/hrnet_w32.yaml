@@ -1,0 +1,4 @@
+model:
+  family: hrnet
+  width: 32
+  num_joints: 16

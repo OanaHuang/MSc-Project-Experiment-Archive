@@ -1,0 +1,6 @@
+id: p0
+name: SpikePose-P0-ProfileA
+category: training_profile
+parent: baseline
+description: Fixed B0 architecture trained with the legacy Profile A recipe
+reuse_reference: baseline

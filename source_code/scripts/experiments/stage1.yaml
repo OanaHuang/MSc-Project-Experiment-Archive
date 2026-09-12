@@ -1,0 +1,10 @@
+id: stage1
+name: SpikePose-Stage1
+legacy_reference: B2
+category: structure
+parent: baseline
+description: Exact legacy B2 stage-1-only ablation
+changes:
+  model.backbone.output_stages: [1]
+  model.head.upsample_factor: 1
+  model.head.output_init: small_normal

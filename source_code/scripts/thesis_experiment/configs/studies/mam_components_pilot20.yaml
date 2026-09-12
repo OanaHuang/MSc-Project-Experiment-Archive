@@ -1,0 +1,11 @@
+id: mam_components_pilot20
+profile: pilot20
+description: Complete Table 5(a) MAM structural component ablation on full NTU-CS.
+experiments:
+  - mamv2_fullcs20
+  - mamv2_p06_noalign
+  - mamv2_p07_fixed_decay
+  - pilot20_mamv2_noresidual
+  - pilot20_mamv2_nomotiontoken
+  - pilot20_mamv2_nooffsethead
+  - pilot20_mamv2_nomemoryupdate

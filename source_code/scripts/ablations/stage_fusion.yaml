@@ -1,0 +1,11 @@
+id: stage_fusion
+title: Strict fixed-capacity stage-fusion ablation under Profile B
+reference: s3
+experiments:
+  - s0
+  - s1
+  - s2
+  - s3
+  - s4
+  - s5
+  - s6

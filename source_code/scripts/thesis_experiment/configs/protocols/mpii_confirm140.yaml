@@ -1,0 +1,4 @@
+extends: mpii_p210
+training:
+  epochs: 140
+  milestone_epochs: [70, 140]

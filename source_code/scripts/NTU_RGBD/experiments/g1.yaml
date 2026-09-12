@@ -1,0 +1,6 @@
+id: g1
+name: SpikePose-NTU-G1-FrameGap1
+dataset_scope: ntu_rgbd
+category: frame_gap
+parent: f2
+description: Two causal RGB frames separated by one source frame on the shared gap target set

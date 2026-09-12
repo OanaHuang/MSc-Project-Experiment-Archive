@@ -1,0 +1,21 @@
+extends: mpii_confirm140
+data:
+  split_protocol: official_hrnet_mpii
+  train_metadata: Datasets/MPII/metadata/official_hrnet/train.jsonl
+  validation_metadata: Datasets/MPII/metadata/official_hrnet/val.jsonl
+  head_bone_calibration: null
+  color_rgb: true
+training:
+  augmentation:
+    scale_factor: 0.25
+    rotation_degrees: 30.0
+    flip_probability: 0.5
+evaluation:
+  main_decoder: quarter
+  supplementary_decoder: null
+  flip_test: true
+  flip_shift: true
+protocol_provenance:
+  source: HRNet/HRNet-Human-Pose-Estimation
+  split: official train.json and valid.json
+  validation_people: 2958

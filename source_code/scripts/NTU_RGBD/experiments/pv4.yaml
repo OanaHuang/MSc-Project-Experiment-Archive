@@ -1,0 +1,3 @@
+id: pv4
+method: gru
+description: Two-layer causal GRU coordinate refiner

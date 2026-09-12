@@ -1,0 +1,31 @@
+id: pilot20_ntu_spikformer
+paper_id: Pilot20-NTU-Spikformer-T1-Frame
+stage: paper_baseline
+run_type: pilot
+profile: pilot20
+priority: pilot
+model_config: spikformer
+protocol: ntu_cs_mam20
+implementation_status: ready
+initialization:
+  mode: checkpoint
+  source: mpii_official_spikformer
+  source_output_root: Outputs_Thesis
+  source_run_type: formal
+  match_seed: true
+  load: spatial_weights_only
+training:
+  phases:
+    - name: head_adaptation
+      start_epoch: 1
+      end_epoch: 5
+      train_modules: [head]
+      freeze_batch_norm: true
+      learning_rates: {head: 0.001}
+    - name: spatial_finetune
+      start_epoch: 6
+      end_epoch: 20
+      train_modules: [backbone, head]
+      freeze_batch_norm: false
+      learning_rates: {backbone: 0.0001, head: 0.0005}
+temporal: {video_frames: 16, snn_updates_per_frame: 1, input_mode: stream, state_policy: reset, readout: last}

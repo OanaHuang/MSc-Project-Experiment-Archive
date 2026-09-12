@@ -1,0 +1,9 @@
+id: fp8
+name: SpikePose-NTU-FP8-DecoupledTimeResidualCorrection
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: fp6
+description: Decoupled video/SNN time with aligned causal historical residual correction
+changes:
+  model.temporal.state_mode: reset
+  model.temporal.snn_steps_per_frame: 4

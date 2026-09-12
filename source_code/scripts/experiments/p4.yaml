@@ -1,0 +1,6 @@
+id: p4
+name: SpikePose-P4-ScaleAugmentation
+category: training_profile
+parent: p3
+training_profile: profile_p4_scale
+description: Add Profile B scale augmentation while leaving rotation augmentation disabled

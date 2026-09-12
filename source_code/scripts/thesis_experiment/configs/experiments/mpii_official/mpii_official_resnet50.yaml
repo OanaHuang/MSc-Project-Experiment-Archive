@@ -1,0 +1,18 @@
+id: mpii_official_resnet50
+paper_id: MPII-Official-ResNet-50
+stage: mpii_official_external_baseline
+action: evaluate_official_checkpoint
+model_config: pose_resnet50
+protocol: mpii_official_confirm140
+data:
+  color_rgb: false
+initialization:
+  mode: official_checkpoint
+  path: Datasets/MPII/official_simplebaseline/pose_resnet_50_256x256.pth.tar
+  format: official_hrnet
+  repository: https://github.com/microsoft/human-pose-estimation.pytorch
+  reported_pckh: 0.88532
+  tensor_sha256: a770916591d97d62ec38fdc044ffb032ef05c2f9aa0601f18de7b08cff9ced2e
+training:
+  epochs: 0
+  seeds: [0]

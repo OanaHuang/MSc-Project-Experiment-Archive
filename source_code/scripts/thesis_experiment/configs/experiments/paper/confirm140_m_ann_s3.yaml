@@ -1,0 +1,7 @@
+id: confirm140_m_ann_s3
+paper_id: Confirm140-M-ANN-S3
+stage: paper_spatial
+model_config: s5_ann_a4
+protocol: mpii_confirm140
+initialization: {mode: scratch}
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: repeat_current, state_policy: reset, readout: last}

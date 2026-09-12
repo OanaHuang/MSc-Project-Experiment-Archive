@@ -1,0 +1,16 @@
+id: t_ssnn2
+name: T-SSNN2-TimestepShrinkage
+dataset_scope: ntu_rgbd
+category: t_ssnn
+parent: mem_fpn
+description: Four causal RGB frames progressively compressed as 4-3-2-1
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.stage_steps: [4, 3, 2, 1]
+  model.temporal.transform_kind: learned
+  model.temporal.output_steps: 1
+  model.temporal.translation_pixels: 0

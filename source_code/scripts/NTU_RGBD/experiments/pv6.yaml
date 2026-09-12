@@ -1,0 +1,3 @@
+id: pv6
+method: confidence_snn
+description: Confidence-dynamic coordinate ILIF refiner

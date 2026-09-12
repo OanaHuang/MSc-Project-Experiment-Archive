@@ -1,0 +1,8 @@
+id: resformer_fpn
+name: SpikePose-ResFormer-FPN
+legacy_reference: bf_resformer
+category: backbone_fpn
+parent: mem_fpn
+description: Membrane residual blocks with spike attention and FPN
+changes:
+  model.backbone.attention_stages: [3, 4]

@@ -1,0 +1,13 @@
+id: t0
+name: SpikePose-NTU-E6-T0-CurrentFrame
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: mem_fpn
+description: Single-current-frame E6 spatial baseline on the shared four-frame-eligible sample set
+changes:
+  model.num_steps: 1
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

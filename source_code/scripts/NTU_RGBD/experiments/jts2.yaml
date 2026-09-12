@@ -1,0 +1,10 @@
+id: jts2
+name: SpikePose-NTU-JTS2-Shrink4321
+dataset_scope: ntu_rgbd
+category: joint_timestep
+parent: jts1
+description: Repeated-current SNN timestep shrinkage with a 4-3-2-1 stage schedule
+changes:
+  model.temporal.stage_steps: [4, 3, 2, 1]
+  model.temporal.transform_kind: learned
+  model.temporal.output_steps: 1

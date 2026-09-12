@@ -1,0 +1,13 @@
+id: four_stage
+name: SpikePose-4Stage
+legacy_reference: b1_r1
+category: residual
+parent: stage123
+description: Exact legacy b1_r1 four-stage backbone with ANN fusion
+compatibility_note: Preserves the legacy small-normal output initialization and residual_bf training profile used by the completed downstream models; the stage123_clean-to-four_stage boundary is therefore a documented compatibility boundary rather than a strict single-variable comparison
+training_profile: residual_bf
+changes:
+  model.backbone.channels: [64, 128, 256, 256]
+  model.backbone.depths: [1, 2, 2, 2]
+  model.backbone.blocks: [all_conv, all_conv, conv, conv]
+  model.backbone.output_stages: [1, 2, 3, 4]

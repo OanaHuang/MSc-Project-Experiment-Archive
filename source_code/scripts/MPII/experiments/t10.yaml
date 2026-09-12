@@ -1,0 +1,9 @@
+id: t10
+name: SpikePose-E0-T2-LearnableDecay
+dataset_scope: mpii
+legacy_reference: E0 layer-wise parametric ILIF dynamics
+category: temporal
+parent: e0
+description: Learn one membrane decay parameter independently in every ILIF module
+changes:
+  model.neuron.learnable_decay: true

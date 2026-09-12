@@ -1,0 +1,6 @@
+id: coordinate_classification
+name: MPII E9 Coordinate Classification Series
+baseline:
+  experiment: resformer_fpn
+  display_id: cc0
+experiments: [cc1, cc2, cc3]

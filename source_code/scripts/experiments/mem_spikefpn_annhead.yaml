@@ -1,0 +1,9 @@
+id: mem_spikefpn_annhead
+name: SpikePose-Mem-SpikeFPN-ANNHead
+category: main_route
+parent: mem_ann
+description: Replace concat fusion with the established bilinear Spike-FPN while retaining the ANN heatmap head
+changes:
+  model.neck.kind: spike_fpn
+  model.neck.interpolation: bilinear
+  model.neck.align_corners: false

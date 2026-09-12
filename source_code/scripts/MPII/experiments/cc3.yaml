@@ -1,0 +1,9 @@
+id: cc3
+name: SpikePose-E9-CoordinateClassification-K3
+dataset_scope: mpii
+category: coordinate_classification
+parent: cc2
+description: Increase only the SimCC coordinate resolution to three bins per input pixel
+changes:
+  model.head.split_ratio: 3
+  model.head.label_sigma: 6.0

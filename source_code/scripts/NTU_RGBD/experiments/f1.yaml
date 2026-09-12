@@ -1,0 +1,13 @@
+id: f1
+name: SpikePose-NTU-F1-SingleFrame
+dataset_scope: ntu_rgbd
+category: frame_count
+parent: e0
+description: One current RGB frame on the shared four-frame-eligible population
+changes:
+  model.num_steps: 1
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

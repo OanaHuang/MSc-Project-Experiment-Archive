@@ -1,0 +1,4 @@
+id: head
+title: Heatmap head ablation
+reference: stage123
+experiments: [stage123, spike_head]

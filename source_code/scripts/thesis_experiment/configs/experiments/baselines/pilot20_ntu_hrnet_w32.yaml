@@ -1,0 +1,16 @@
+id: pilot20_ntu_hrnet_w32
+paper_id: Pilot20-NTU-HRNet-W32
+stage: paper_baseline
+run_type: pilot
+profile: pilot20
+priority: pilot
+model_config: hrnet_w32
+protocol: ntu_cs_pilot20
+initialization:
+  mode: official_checkpoint
+  path: Datasets/MPII/official_simplebaseline/pose_hrnet_w32_256x256.pth
+  format: official_hrnet
+training:
+  seeds: [42]
+  learning_rate: 0.0001
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: repeat_current, state_policy: reset, readout: last}

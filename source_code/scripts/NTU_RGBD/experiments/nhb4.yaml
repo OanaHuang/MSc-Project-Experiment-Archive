@@ -1,0 +1,11 @@
+id: nhb4
+name: NTU-NHB4-HRNetW32-MPIIPretrained
+dataset_scope: ntu_rgbd
+category: external_baselines
+parent: nhb3
+description: HRNet-W32 initialized from official MPII tensors and trained on NTU RGB+D
+changes:
+  model.pretrained:
+    source_experiment: hb1
+    checkpoint: Datasets/MPII/official_simplebaseline/pose_hrnet_w32_256x256.pth
+    checkpoint_tensor_sha256: 69651a97e0071ee84731f7de99f082ad907d233161cfb143760b126c128f6afb

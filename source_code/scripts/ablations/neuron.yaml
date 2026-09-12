@@ -1,0 +1,4 @@
+id: neuron
+title: Neuron ablation
+reference: stage123
+experiments: [stage123, lif, relu]

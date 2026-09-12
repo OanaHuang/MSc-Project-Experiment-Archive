@@ -1,0 +1,8 @@
+id: rg3
+name: SpikePose-E9-Integral-CoordinateRegression
+dataset_scope: mpii
+category: coordinate_regression
+parent: rg2
+description: Preserve the full spatial joint distributions and regress coordinates by soft-argmax
+changes:
+  model.head.regression_variant: integral

@@ -1,0 +1,24 @@
+model:
+  family: spikformer
+  variant: spikformer_8_384_t1
+  num_joints: 16
+  in_channels: 3
+  heatmap_size: [64, 64]
+  backbone:
+    source: ZK-Zhou/spikformer:imagenet/model.py
+    embed_dims: 384
+    depth: 8
+    num_heads: 8
+    mlp_ratio: 4.0
+    feature_stride: 16
+    snn_steps: 1
+  temporal:
+    input_strategy: repeat
+    aggregation: mean
+    state_mode: reset
+    snn_steps_per_frame: 1
+  head:
+    kind: linear_heatmap
+    hidden_channels: 384
+    output_init: small_normal
+    output_init_std: 0.001

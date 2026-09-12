@@ -1,0 +1,4 @@
+id: backbone_fpn
+title: Backbone and spike-FPN ablation
+reference: mem_fpn
+experiments: [mem_fpn, multiconv_fpn, sew_fpn, resformer_fpn]

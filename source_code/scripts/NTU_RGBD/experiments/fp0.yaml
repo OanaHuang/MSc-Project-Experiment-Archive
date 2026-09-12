@@ -1,0 +1,7 @@
+id: fp0
+name: SpikePose-NTU-FP0-CurrentFrame
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: t0
+description: Paper-series frame-wise SpikePose baseline on the shared four-frame-eligible sample population
+changes: {}

@@ -1,0 +1,7 @@
+extends: s3_sp_a4
+model:
+  num_steps: 1
+  neuron:
+    kind: relu
+  temporal:
+    snn_steps_per_frame: 1

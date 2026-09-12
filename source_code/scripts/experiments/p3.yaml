@@ -1,0 +1,6 @@
+id: p3
+name: SpikePose-P3-GradientClipping
+category: training_profile
+parent: p2
+training_profile: profile_p3_clipping
+description: Add Profile B gradient clipping while retaining the no-augmentation data pipeline

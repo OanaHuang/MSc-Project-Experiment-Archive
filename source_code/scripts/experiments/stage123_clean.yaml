@@ -1,0 +1,7 @@
+id: stage123_clean
+name: SpikePose-Stage123-Clean
+category: main_route
+parent: head1x
+description: Add the high-resolution Stage 1 feature to the Head1x model
+changes:
+  model.backbone.output_stages: [1, 2, 3]

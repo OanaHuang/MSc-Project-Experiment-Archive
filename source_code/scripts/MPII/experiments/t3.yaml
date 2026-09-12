@@ -1,0 +1,14 @@
+id: t3
+name: SpikePose-E0-T2-Translate2-Last
+dataset_scope: mpii
+legacy_reference: E0 synthetic temporal small translation
+category: temporal
+parent: e0
+description: E0 with a synthetic translated previous frame up to two pixels
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: previous_translate_current
+  model.temporal.aggregation: last
+  model.temporal.translation_pixels: 2
+  model.temporal.randomize_training: true
+  model.temporal.eval_translation: [2, 0]

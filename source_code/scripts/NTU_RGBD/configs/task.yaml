@@ -1,0 +1,22 @@
+dataset: ntu_rgbd
+model:
+  num_joints: 25
+  heatmap_size: [64, 64]
+data:
+  extracted_frames_dir: Datasets/NTU_RGBD/frames/S010/clip4_256
+  image_size: 256
+  heatmap_size: 64
+  sigma: 2.0
+  frame_stride: 5
+  frame_backend: images
+  skeleton_cache_size: 2048
+  person_crop: true
+  bbox_expansion: 0.25
+  validate_pose_sequences: true
+  train_metadata: Datasets/NTU_RGBD/metadata/train_split.csv
+  validation_metadata: Datasets/NTU_RGBD/metadata/val_split.csv
+  visualization_metadata: Datasets/NTU_RGBD/metadata/val_split.csv
+visualization:
+  first_count: 10
+  random_count: 10
+  selection_seed: 2026

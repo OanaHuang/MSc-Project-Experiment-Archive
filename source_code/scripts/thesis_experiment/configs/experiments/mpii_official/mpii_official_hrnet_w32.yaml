@@ -1,0 +1,18 @@
+id: mpii_official_hrnet_w32
+paper_id: MPII-Official-HRNet-W32
+stage: mpii_official_external_baseline
+action: evaluate_official_checkpoint
+model_config: hrnet_w32
+protocol: mpii_official_confirm140
+data:
+  color_rgb: true
+initialization:
+  mode: official_checkpoint
+  path: Datasets/MPII/official_simplebaseline/pose_hrnet_w32_256x256.pth
+  format: official_hrnet
+  repository: https://github.com/HRNet/HRNet-Human-Pose-Estimation
+  reported_pckh: 0.903
+  tensor_sha256: 69651a97e0071ee84731f7de99f082ad907d233161cfb143760b126c128f6afb
+training:
+  epochs: 0
+  seeds: [0]

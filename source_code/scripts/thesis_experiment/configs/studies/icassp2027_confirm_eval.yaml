@@ -1,0 +1,9 @@
+id: icassp2027_confirm_eval
+description: No-retraining controls and classical temporal refinements.
+experiments:
+  - confirm140_control_v1u1
+  - confirm140_control_v1u2
+  - confirm140_control_v2u2
+  - confirm140_eval_ema_shared
+  - confirm140_eval_sg_causal
+  - confirm140_eval_one_euro

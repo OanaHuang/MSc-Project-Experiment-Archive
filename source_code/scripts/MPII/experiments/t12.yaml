@@ -1,0 +1,11 @@
+id: t12
+name: SpikePose-E0-T2-MembraneReadout-LearnableDecay
+dataset_scope: mpii
+legacy_reference: E0 hybrid membrane readout with parametric ILIF dynamics
+category: temporal
+parent: e0
+description: Combine learned residual membrane readout with layer-wise learnable decay
+changes:
+  model.neuron.membrane_readout: true
+  model.neuron.membrane_readout_init: 0.01
+  model.neuron.learnable_decay: true

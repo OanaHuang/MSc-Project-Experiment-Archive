@@ -1,0 +1,8 @@
+extends: ntu_cs140
+dataset: ntu60_cv
+data:
+  train_metadata: Datasets/NTU_RGBD/metadata/contiguous_xview/train.csv
+  validation_metadata: Datasets/NTU_RGBD/metadata/contiguous_xview/validation.csv
+  test_metadata: Datasets/NTU_RGBD/metadata/contiguous_xview/test.csv
+  validation_fraction: 0.10
+  validation_strategy: deterministic_sequence_hash

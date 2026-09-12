@@ -1,0 +1,40 @@
+id: mamv2_fullcs_p00_source
+paper_id: DEV-NTUCS2x16-S3-X2-VRESET-P20-FULLCS
+stage: mam_v2_fullcs_source
+run_type: pilot
+profile: pilot20
+priority: pilot
+model_config: s3_sp_a4
+protocol: ntu_cs_mam20
+
+initialization:
+  mode: checkpoint
+  source: pilot20_m_s3_u2
+  match_seed: true
+  load: spatial_weights_only
+
+model:
+  temporal:
+    memory_kind: reset
+
+training:
+  phases:
+    - name: head_adaptation
+      start_epoch: 1
+      end_epoch: 5
+      train_modules: [head]
+      freeze_batch_norm: true
+      learning_rates: {head: 0.001}
+    - name: spatial_finetune
+      start_epoch: 6
+      end_epoch: 20
+      train_modules: [backbone, neck, head]
+      freeze_batch_norm: false
+      learning_rates: {backbone: 0.0001, neck: 0.0005, head: 0.0005}
+
+temporal:
+  video_frames: 16
+  snn_updates_per_frame: 1
+  input_mode: stream
+  state_policy: reset
+  readout: last

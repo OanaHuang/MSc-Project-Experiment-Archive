@@ -1,0 +1,10 @@
+id: mpii_official_backbones
+description: Table 1 backbone comparison on the fixed official HRNet MPII split.
+experiments:
+  - mpii_official_spikepose_ann
+  - mpii_official_resnet50
+  - mpii_official_hrnet_w32
+  - mpii_official_spikeyolo
+  - mpii_official_spikformer
+  - mpii_official_spikepose_u1
+  - mpii_official_spikepose_u2

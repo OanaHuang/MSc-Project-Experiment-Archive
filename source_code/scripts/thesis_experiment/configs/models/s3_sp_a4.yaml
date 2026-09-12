@@ -1,0 +1,4 @@
+extends: s2_sp_fpn_light
+model:
+  backbone:
+    attention_stages: [4]

@@ -1,0 +1,20 @@
+id: icassp2027_pilot20
+profile: pilot20
+description: Final-paper Pilot20 training roster; full NTU-CS only.
+experiments:
+  - pilot20_m_ann_s3
+  - pilot20_m_s3_u1
+  - pilot20_m_s3_u2
+  - pilot20_factor_v1u1
+  - pilot20_factor_v1u2
+  - pilot20_factor_v1u4
+  - pilot20_factor_v2u2
+  - pilot20_factor_v2u4
+  - pilot20_factor_v4u4
+  - mamv2_fullcs_p00_source
+  - mamv2_fullcs20
+  - pilot20_ntu_simplebaseline_r50
+  - pilot20_ntu_hrnet_w32
+  - mamv2_p06_noalign
+  - mamv2_p07_fixed_decay
+  - pilot20_mamv2_noresidual

@@ -1,0 +1,26 @@
+extends: ntu_cs80
+training:
+  epochs: 70
+  batch_size: 128
+  optimizer: adam
+  learning_rate: 0.02
+  weight_decay: 0.0
+  gradient_clip: 1.0
+  scheduler:
+    kind: constant
+refinement_protocol:
+  clip_length: 16
+  clip_stride: 8
+  # Predictions are stored in original 1920x1080 NTU RGB coordinates.  A
+  # fixed constant keeps optimization numerically stable without using the
+  # ground-truth head/torso scale at training or inference time.
+  coordinate_scale: 1920.0
+  shared_epochs: 20
+  jointwise_epochs: 50
+  alpha_min: 0.05
+  alpha_max: 0.95
+  losses:
+    position: 1.0
+    velocity: 0.25
+    acceleration: 0.05
+    motion_magnitude: 0.05

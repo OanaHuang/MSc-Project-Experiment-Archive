@@ -1,0 +1,17 @@
+id: pilot20_m_s3_u2
+paper_id: Pilot20-M-S3-U2
+stage: spatial
+run_type: pilot
+profile: pilot20
+priority: pilot
+model_config: s3_sp_a4
+protocol: mpii_p140
+initialization: {mode: scratch}
+training:
+  epochs: 20
+temporal:
+  video_frames: 1
+  snn_updates_per_frame: 2
+  input_mode: repeat_current
+  state_policy: reset
+  readout: mean

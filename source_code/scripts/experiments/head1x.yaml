@@ -1,0 +1,7 @@
+id: head1x
+name: SpikePose-Head1x
+category: main_route
+parent: baseline
+description: Remove the ANN head 2x transposed-convolution upsampling only
+changes:
+  model.head.upsample_factor: 1

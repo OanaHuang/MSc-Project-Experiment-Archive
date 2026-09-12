@@ -1,0 +1,8 @@
+id: mam_ktp_pilot20
+profile: pilot20
+description: Causal 2x2 KPA/TPA ablation on the retained Core MAM.
+experiments:
+  - mamv2_fullcs20
+  - pilot20_mamv2_kpa
+  - pilot20_mamv2_tpa
+  - pilot20_mamv2_ktp

@@ -1,0 +1,31 @@
+id: hb1
+name: MPII-HB1-HRNetW32-Official
+dataset_scope: mpii
+category: external_baselines
+protocol: official_hrnet_mpii
+checkpoint: Datasets/MPII/official_simplebaseline/pose_hrnet_w32_256x256.pth
+official_reference:
+  repository: https://github.com/HRNet/HRNet-Human-Pose-Estimation
+  config: experiments/mpii/hrnet/w32_256x256_adam_lr1e-3.yaml
+  reported_pckh: 0.903
+  checkpoint_tensor_sha256: 69651a97e0071ee84731f7de99f082ad907d233161cfb143760b126c128f6afb
+  training_epochs: 210
+  optimizer: adam
+  learning_rate: 0.001
+  learning_rate_steps: [170, 200]
+  weight_decay: 0.0001
+  batch_size_per_gpu: 32
+  test_flip: true
+  test_post_process: true
+  test_shift_heatmap: true
+model:
+  family: hrnet
+  width: 32
+  num_joints: 16
+data:
+  images_dir: Datasets/MPII/images
+  validation_metadata: Datasets/MPII/metadata/official_hrnet/val.jsonl
+  image_size: 256
+  heatmap_size: 64
+  sigma: 2.0
+  color_rgb: true

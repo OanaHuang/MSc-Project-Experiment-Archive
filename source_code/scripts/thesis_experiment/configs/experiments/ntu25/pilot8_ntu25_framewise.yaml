@@ -1,0 +1,51 @@
+id: pilot8_ntu25_framewise
+paper_id: Pilot8-NTU25-Framewise
+stage: ntu25_preview
+run_type: pilot
+profile: ntu25_preview8
+priority: pilot
+model_config: s3_sp_a4
+protocol: ntu25_preview8
+
+initialization:
+  mode: checkpoint
+  source: mamv2_fullcs_p00_source
+  match_seed: true
+  load: mpii16_to_ntu25
+
+model:
+  num_joints: 25
+  temporal:
+    # The source's reset MAM is mathematically frame-wise and contains only
+    # unused joint-shaped parameters. Removing it makes the 25-joint route
+    # explicit while preserving the source spatial network exactly.
+    memory_kind: none
+
+data:
+  minimum_temporal_history: 15
+
+training:
+  batch_size: 32
+  clip_batch_size: 8
+  num_workers: 4
+  loss_all_frames: true
+  phases:
+    - name: ntu25_head_adaptation
+      start_epoch: 1
+      end_epoch: 3
+      train_modules: [head]
+      freeze_batch_norm: true
+      learning_rates: {head: 0.001}
+    - name: ntu25_spatial_finetune
+      start_epoch: 4
+      end_epoch: 8
+      train_modules: [backbone, neck, head]
+      freeze_batch_norm: false
+      learning_rates: {backbone: 0.00005, neck: 0.00025, head: 0.0005}
+
+temporal:
+  video_frames: 16
+  snn_updates_per_frame: 1
+  input_mode: stream
+  state_policy: reset
+  readout: last

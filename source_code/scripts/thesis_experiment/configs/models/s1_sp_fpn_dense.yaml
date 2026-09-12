@@ -1,0 +1,6 @@
+extends: base_spikepose
+model:
+  head:
+    kind: ann_heatmap
+    hidden_channels: 128
+    upsample_factor: 1

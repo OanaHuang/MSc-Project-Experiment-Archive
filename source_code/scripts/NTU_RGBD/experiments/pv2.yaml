@@ -1,0 +1,3 @@
+id: pv2
+method: last_observation
+description: Last reliable observation causal baseline

@@ -1,0 +1,10 @@
+id: rg2
+name: SpikePose-E9-Spatial-CoordinateRegression
+dataset_scope: mpii
+category: coordinate_regression
+parent: rg1
+description: Preserve an 8x8 spatial layout in the direct coordinate regression head
+changes:
+  model.head.regression_variant: spatial
+  model.head.regression_channels: 32
+  model.head.spatial_pool_size: [8, 8]

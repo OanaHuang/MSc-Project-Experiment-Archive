@@ -1,0 +1,4 @@
+id: residual
+title: Residual and fusion-domain ablation
+reference: stage123
+experiments: [stage123, four_stage, mem_ann, mem_fpn]

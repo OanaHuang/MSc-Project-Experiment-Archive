@@ -1,0 +1,13 @@
+id: f4
+name: SpikePose-NTU-F4-AdjacentFrames
+dataset_scope: ntu_rgbd
+category: frame_count
+parent: e0
+description: Four adjacent causal RGB frames on the shared target population
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

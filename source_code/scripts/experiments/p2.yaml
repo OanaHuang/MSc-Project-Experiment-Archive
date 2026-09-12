@@ -1,0 +1,6 @@
+id: p2
+name: SpikePose-P2-WarmupCosine
+category: training_profile
+parent: p1
+training_profile: profile_p2_schedule
+description: Replace the plateau learning-rate policy with the Profile B warm-up cosine schedule, without clipping or geometric augmentation

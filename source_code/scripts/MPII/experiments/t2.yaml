@@ -1,0 +1,12 @@
+id: t2
+name: SpikePose-E0-T2-Repeat-Last
+dataset_scope: mpii
+legacy_reference: E0 temporal integration control
+category: temporal
+parent: e0
+description: E0 with two repeated steps and last-step aggregation
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: repeat
+  model.temporal.aggregation: last
+  model.temporal.translation_pixels: 0

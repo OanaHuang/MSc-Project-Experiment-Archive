@@ -1,0 +1,9 @@
+id: v2
+name: SpikePose-NTU-V2-TemporalDifferenceGate
+dataset_scope: ntu_rgbd
+category: video_hpe_solution
+parent: cf10
+description: TDMI-inspired joint-wise temporal difference encoding and adaptive fusion
+changes:
+  model.temporal.aggregation: joint_difference_temporal
+  model.temporal.intermediate_loss_weight: 0.0

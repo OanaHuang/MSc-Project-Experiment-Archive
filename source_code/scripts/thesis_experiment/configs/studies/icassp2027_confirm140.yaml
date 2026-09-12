@@ -1,0 +1,19 @@
+id: icassp2027_confirm140
+description: Independent 140-epoch final-paper training roster.
+experiments:
+  - confirm140_m_ann_s3
+  - confirm140_m_s3_u1
+  - confirm140_m_s3_u2
+  - confirm140_factor_v1u1
+  - confirm140_factor_v1u2
+  - confirm140_factor_v1u4
+  - confirm140_factor_v2u2
+  - confirm140_factor_v2u4
+  - confirm140_factor_v4u4
+  - confirm140_ntu_spikepose_frame
+  - confirm140_ntu_simplebaseline_r50
+  - confirm140_ntu_hrnet_w32
+  - confirm140_ntu_mamv2
+  - confirm140_ntu_mamv2_noalign
+  - confirm140_ntu_mamv2_fixedleak
+  - confirm140_ntu_mamv2_noresidual

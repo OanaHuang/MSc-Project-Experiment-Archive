@@ -1,0 +1,13 @@
+id: t5
+name: SpikePose-NTU-E6-T5-MotionAdaptiveTemporal
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: mem_fpn
+description: Joint-wise causal aggregation with soft-coordinate motion-adaptive history weighting
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: joint_motion_temporal
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

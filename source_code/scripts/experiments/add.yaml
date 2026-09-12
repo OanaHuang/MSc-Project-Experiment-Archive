@@ -1,0 +1,8 @@
+id: add
+name: SpikePose-Add
+legacy_reference: F2
+category: fusion
+parent: stage123
+description: Exact legacy F2 projected-addition ablation
+changes:
+  model.neck.kind: add

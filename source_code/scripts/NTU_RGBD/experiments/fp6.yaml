@@ -1,0 +1,7 @@
+id: fp6
+name: SpikePose-NTU-FP6-CausalPoseResidualCorrection
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: v1
+description: Aligned historical pose residual correction of the current-frame prediction
+changes: {}

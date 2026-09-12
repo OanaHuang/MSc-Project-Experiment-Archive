@@ -1,0 +1,59 @@
+dataset: ntu60_cs
+data:
+  frames_dir: Datasets/NTU_RGBD/frames
+  frame_layout: setup_contiguous_clips
+  frame_clip_subdir: contiguous_2x16
+  contiguous_clip_length: 16
+  clips_per_sequence: 2
+  frames_per_sequence: 32
+  train_metadata: Datasets/NTU_RGBD/metadata/s010/train_split.csv
+  validation_metadata: Datasets/NTU_RGBD/metadata/s010/val_split.csv
+  test_metadata: Datasets/NTU_RGBD/metadata/s010/val_split.csv
+  image_size: 256
+  heatmap_size: 64
+  sigma: 2.0
+  frame_stride: 1
+  temporal_frame_gap: 1
+  minimum_temporal_history: 15
+  person_crop: true
+  tube_crop: true
+  bbox_expansion: 0.25
+  pose_validation_mode: skip
+  runtime_cache_mode: required
+  runtime_cache_root: Datasets/NTU_RGBD/runtime_cache_v1
+  runtime_cache_manifest: Datasets/NTU_RGBD/runtime_cache_v1/manifest.json
+  runtime_spatial_crops: true
+  joint_mapping: ntu25_to_mpii16_v1
+  split_by_sequence: true
+training:
+  epochs: 20
+  seeds: [42]
+  batch_size: 32
+  clip_batch_size: 8
+  num_workers: 4
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  gradient_accumulation: 1
+  mixed_precision: true
+  deterministic_workers: true
+  target_heatmap_backend: gpu
+  loss_all_frames: true
+  single_pass_validation: true
+  firing_rate_batches: 1
+  progress_interval: 100
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 5
+    min_lr: 0.000001
+  augmentation:
+    scale_range: [0.85, 1.15]
+    rotation_degrees: 15.0
+    flip_probability: 0.5
+selection: {metric: pck_hb_0_5, mode: max}
+evaluation:
+  main_decoder: dark
+  thresholds: [0.1, 0.2, 0.5]
+  pck_auc_range: [0.0, 0.5]
+  sequence_weighting: equal

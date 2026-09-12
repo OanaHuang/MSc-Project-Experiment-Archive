@@ -1,0 +1,9 @@
+id: fp7
+name: SpikePose-NTU-FP7-DecoupledTimeMean
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: fp2
+description: Four video frames with an independent four-step SNN trajectory per frame
+changes:
+  model.temporal.state_mode: reset
+  model.temporal.snn_steps_per_frame: 4

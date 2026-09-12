@@ -1,0 +1,4 @@
+extends: base_spikepose
+model:
+  backbone:
+    blocks: [all_conv, sew_add, sew_add, sew_add]

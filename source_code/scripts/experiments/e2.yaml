@@ -1,0 +1,7 @@
+id: e2
+name: SpikePose-E2-Stage123
+category: main_route
+parent: e1
+description: Add only the high-resolution Stage 1 feature to the E1 fusion inputs
+changes:
+  model.backbone.output_stages: [1, 2, 3]

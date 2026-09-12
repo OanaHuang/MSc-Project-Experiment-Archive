@@ -1,0 +1,15 @@
+id: pilot20
+run_type: pilot
+paper_id_prefix: Pilot20-
+training:
+  # Runtime --epochs may override this for scoped Pilot runs.
+  epochs: 20
+  milestone_epochs: [10, 20]
+source_overrides:
+  m_s3_u1: pilot20_m_s3_u1
+  m_s3_u2: pilot20_m_s3_u2
+refinement_protocol:
+  clip_length: 16
+  clip_stride: 8
+  shared_epochs: 5
+  jointwise_epochs: 15

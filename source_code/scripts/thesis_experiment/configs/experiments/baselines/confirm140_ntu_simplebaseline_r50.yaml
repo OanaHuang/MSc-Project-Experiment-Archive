@@ -1,0 +1,12 @@
+id: confirm140_ntu_simplebaseline_r50
+paper_id: Confirm140-NTU-SimpleBaseline-R50
+stage: paper_baseline
+model_config: pose_resnet50
+protocol: ntu_cs_confirm140
+initialization:
+  mode: official_checkpoint
+  path: Datasets/MPII/official_simplebaseline/pose_resnet_50_256x256.pth.tar
+  format: official_hrnet
+training:
+  learning_rate: 0.0001
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: repeat_current, state_policy: reset, readout: last}

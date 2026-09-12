@@ -1,0 +1,17 @@
+dataset: mpii
+model:
+  num_joints: 16
+  heatmap_size: [64, 64]
+data:
+  images_dir: Datasets/MPII/images
+  image_size: 256
+  heatmap_size: 64
+  sigma: 2.0
+  crop_expansion: 1.25
+  train_metadata: Datasets/MPII/metadata/train.jsonl
+  validation_metadata: Datasets/MPII/metadata/val.jsonl
+  visualization_metadata: Datasets/MPII/metadata/val.jsonl
+visualization:
+  first_count: 10
+  random_count: 10
+  selection_seed: 2026

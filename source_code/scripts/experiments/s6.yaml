@@ -1,0 +1,7 @@
+id: s6
+name: SpikePose-S6-WithoutStage4
+category: stage_fusion
+parent: s3
+description: Leave-one-out model with Stage 4 disabled
+changes:
+  model.neck.stage_mask: [1, 1, 1, 0]

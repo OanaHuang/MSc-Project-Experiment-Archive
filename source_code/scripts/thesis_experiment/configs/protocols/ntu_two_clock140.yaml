@@ -1,0 +1,26 @@
+extends: ntu_cs140
+training:
+  epochs: 120
+  # Default for V1-U2 and V2-U1: 128 frame-updates/GPU step and 128
+  # supervised targets per optimizer update.
+  batch_size: 64
+  clip_batch_size: 64
+  gradient_accumulation: 2
+  learning_rate: 0.0005
+  phases:
+    - name: head_adaptation
+      start_epoch: 1
+      end_epoch: 5
+      train_modules: [head]
+      freeze_batch_norm: true
+      learning_rates: {head: 0.001}
+    - name: full_finetuning
+      start_epoch: 6
+      end_epoch: 120
+      train_modules: [backbone, neck, head]
+      freeze_batch_norm: false
+      learning_rates: {backbone: 0.0001, neck: 0.0005, head: 0.0005}
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 5
+    min_lr: 0.000001

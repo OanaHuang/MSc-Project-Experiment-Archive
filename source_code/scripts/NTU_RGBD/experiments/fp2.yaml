@@ -1,0 +1,13 @@
+id: fp2
+name: SpikePose-NTU-FP2-FourFrameMean
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: mem_fpn
+description: Four-frame causal uniform-mean fusion baseline
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

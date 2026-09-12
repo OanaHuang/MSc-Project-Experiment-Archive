@@ -1,0 +1,26 @@
+id: t19
+name: SpikePose-E0-T2-SkeletonHeatmapFeedback
+dataset_scope: mpii
+legacy_reference: E0 skeleton-aware heatmap-feedback refinement
+category: temporal
+parent: e0
+description: Propagate predictions over the MPII skeleton before temporal feedback
+changes:
+  model.temporal.aggregation: skeleton_heatmap_feedback
+  model.temporal.intermediate_loss_weight: 0.5
+  model.temporal.feedback_edges:
+    - [0, 1]
+    - [1, 2]
+    - [2, 6]
+    - [6, 3]
+    - [3, 4]
+    - [4, 5]
+    - [6, 7]
+    - [7, 8]
+    - [8, 9]
+    - [7, 12]
+    - [12, 11]
+    - [11, 10]
+    - [7, 13]
+    - [13, 14]
+    - [14, 15]

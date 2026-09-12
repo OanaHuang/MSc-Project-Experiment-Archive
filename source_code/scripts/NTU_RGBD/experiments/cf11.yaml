@@ -1,0 +1,8 @@
+id: cf11
+name: SpikePose-NTU-CF11-AlignedForecastSupervision
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: cf10
+description: Joint alignment with auxiliary current-pose forecast loss on history states
+changes:
+  model.temporal.intermediate_loss_weight: 0.2

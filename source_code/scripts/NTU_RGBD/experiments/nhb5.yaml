@@ -1,0 +1,12 @@
+id: nhb5
+name: NTU-NHB5-HRNetW48-Scratch
+dataset_scope: ntu_rgbd
+category: external_baselines
+parent: baseline
+training_profile: residual_bf
+description: Single-frame HRNet-W48 trained from scratch on NTU RGB+D
+changes:
+  model.family: hrnet
+  model.width: 48
+  model.num_steps: 1
+  model.input_color: rgb

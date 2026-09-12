@@ -1,0 +1,3 @@
+id: pv7
+method: confidence_graph_snn
+description: Confidence-dynamic graph ILIF refiner

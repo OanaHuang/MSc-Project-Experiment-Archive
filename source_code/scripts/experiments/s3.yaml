@@ -1,0 +1,7 @@
+id: s3
+name: SpikePose-S3-Stage1234
+category: stage_fusion
+parent: s2
+description: Enable all four stages in fixed masked additive fusion
+changes:
+  model.neck.stage_mask: [1, 1, 1, 1]

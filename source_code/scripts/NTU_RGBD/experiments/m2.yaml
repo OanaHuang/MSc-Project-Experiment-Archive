@@ -1,0 +1,9 @@
+id: m2
+name: SpikePose-NTU-M2-FixedMotionTrend
+dataset_scope: ntu_rgbd
+category: motion_trend
+parent: m1
+description: History-only constant-acceleration forecast with fixed residual fusion
+changes:
+  model.temporal.aggregation: motion_trend_fixed
+  model.temporal.intermediate_loss_weight: 0.25

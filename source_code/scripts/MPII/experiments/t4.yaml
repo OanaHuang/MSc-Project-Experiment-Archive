@@ -1,0 +1,14 @@
+id: t4
+name: SpikePose-E0-T2-Translate4-Last
+dataset_scope: mpii
+legacy_reference: E0 synthetic temporal main experiment
+category: temporal
+parent: e0
+description: E0 with a synthetic translated previous frame up to four pixels
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: previous_translate_current
+  model.temporal.aggregation: last
+  model.temporal.translation_pixels: 4
+  model.temporal.randomize_training: true
+  model.temporal.eval_translation: [4, 0]

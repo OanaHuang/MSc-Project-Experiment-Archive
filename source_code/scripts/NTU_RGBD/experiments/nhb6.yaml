@@ -1,0 +1,11 @@
+id: nhb6
+name: NTU-NHB6-HRNetW48-MPIIPretrained
+dataset_scope: ntu_rgbd
+category: external_baselines
+parent: nhb5
+description: HRNet-W48 initialized from official MPII tensors and trained on NTU RGB+D
+changes:
+  model.pretrained:
+    source_experiment: hb2
+    checkpoint: Datasets/MPII/official_simplebaseline/pose_hrnet_w48_256x256.pth
+    checkpoint_tensor_sha256: a2d6dfdd4aab8901147f680ab8ca19328108002062e721d2311140e4f8767985

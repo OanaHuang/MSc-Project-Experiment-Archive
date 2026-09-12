@@ -1,0 +1,13 @@
+id: t_ssnn1
+name: T-SSNN1-FullTimesteps
+dataset_scope: ntu_rgbd
+category: t_ssnn
+parent: mem_fpn
+description: Four causal RGB frames with continuous state and no timestep shrinkage
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

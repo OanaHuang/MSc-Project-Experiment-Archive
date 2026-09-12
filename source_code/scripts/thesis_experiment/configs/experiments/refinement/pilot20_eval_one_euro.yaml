@@ -1,0 +1,16 @@
+id: pilot20_eval_one_euro
+paper_id: Pilot20-Eval-OneEuro
+stage: paper_refinement
+run_type: pilot
+profile: pilot20
+priority: pilot
+action: refinement
+model_config: s3_sp_a4
+protocol: jtr_training
+initialization: {mode: checkpoint, source: mamv2_fullcs_p00_source, match_seed: true, load: predictions}
+training: {epochs: 0, seeds: [42]}
+refinement:
+  method: one_euro
+  causal: true
+  look_ahead: 0
+  validation_grid: {min_cutoff: [0.1, 0.5, 1.0, 2.0, 3.0], beta: [0.0, 0.1, 0.5, 1.0], derivative_cutoff: [1.0]}

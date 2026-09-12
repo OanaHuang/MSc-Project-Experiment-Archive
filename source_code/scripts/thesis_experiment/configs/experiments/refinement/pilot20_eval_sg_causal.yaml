@@ -1,0 +1,12 @@
+id: pilot20_eval_sg_causal
+paper_id: Pilot20-Eval-SG-Causal
+stage: paper_refinement
+run_type: pilot
+profile: pilot20
+priority: pilot
+action: refinement
+model_config: s3_sp_a4
+protocol: jtr_training
+initialization: {mode: checkpoint, source: mamv2_fullcs_p00_source, match_seed: true, load: predictions}
+training: {epochs: 0, seeds: [42]}
+refinement: {method: savgol_causal, causal: true, look_ahead: 0, validation_grid: {window: [5, 7, 9], polynomial_order: [2]}}

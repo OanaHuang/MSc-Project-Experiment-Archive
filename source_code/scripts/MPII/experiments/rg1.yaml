@@ -1,0 +1,11 @@
+id: rg1
+name: SpikePose-E9-GAP-CoordinateRegression
+dataset_scope: mpii
+category: coordinate_regression
+parent: resformer_fpn
+description: Replace only the best E-series heatmap head with global-average direct coordinate regression
+changes:
+  model.head.kind: coordinate_regression
+  model.head.coordinate_size: 256
+  model.head.regression_variant: gap
+  model.head.hidden_channels: 256

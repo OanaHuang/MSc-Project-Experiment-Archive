@@ -1,0 +1,8 @@
+id: remaining_baselines
+description: Remaining single-seed spatial baselines; MPII sources precede NTU transfer.
+experiments:
+  - mpii_official_spikeyolo
+  - mpii_official_spikformer
+  - pilot20_ntu_spikepose_ann
+  - pilot20_ntu_spikeyolo
+  - pilot20_ntu_spikformer

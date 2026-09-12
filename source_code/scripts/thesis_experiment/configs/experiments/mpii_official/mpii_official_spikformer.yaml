@@ -1,0 +1,9 @@
+id: mpii_official_spikformer
+paper_id: MPII-Official-Spikformer-T1
+stage: mpii_official_backbone
+model_config: spikformer
+protocol: mpii_official_confirm140
+implementation_status: ready
+initialization: {mode: scratch}
+training: {seeds: [42]}
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: repeat_current, state_policy: reset, readout: mean}

@@ -1,0 +1,12 @@
+id: pilot20_refine_jointwise
+paper_id: Pilot20-Refine-Jointwise
+stage: paper_refinement
+run_type: pilot
+profile: pilot20
+priority: pilot
+action: refinement
+model_config: s3_sp_a4
+protocol: jtr_training
+initialization: {mode: checkpoint, source: mamv2_fullcs_p00_source, match_seed: true, load: predictions}
+training: {seeds: [42]}
+refinement: {method: jtr_jointwise, causal: true, look_ahead: 0, joints: 16}

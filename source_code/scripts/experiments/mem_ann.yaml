@@ -1,0 +1,9 @@
+id: mem_ann
+name: SpikePose-Mem-ANN
+legacy_reference: b1_r2
+category: residual
+parent: four_stage
+description: Exact legacy b1_r2 membrane residual backbone with ANN fusion
+training_profile: residual_bf
+changes:
+  model.backbone.blocks: [all_conv, membrane, membrane, membrane]

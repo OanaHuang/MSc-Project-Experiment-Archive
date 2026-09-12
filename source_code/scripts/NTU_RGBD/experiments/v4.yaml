@@ -1,0 +1,10 @@
+id: v4
+name: SpikePose-NTU-V4-AccelerationSupervision
+dataset_scope: ntu_rgbd
+category: video_hpe_solution
+parent: cf10
+description: SmoothNet-inspired aligned temporal model with heatmap acceleration supervision
+changes:
+  model.temporal.aggregation: joint_aligned_temporal
+  model.temporal.intermediate_loss_weight: 0.0
+  model.temporal.kinematic_loss_weight: 0.1

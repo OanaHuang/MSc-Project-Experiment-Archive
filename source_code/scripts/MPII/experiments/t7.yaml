@@ -1,0 +1,12 @@
+id: t7
+name: SpikePose-E0-T2-Repeat-HeatmapMean
+dataset_scope: mpii
+legacy_reference: E0 post-head temporal aggregation
+category: temporal
+parent: e0
+description: Apply the shared E0 heatmap head per step and average predictions
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: repeat
+  model.temporal.aggregation: heatmap_mean
+  model.temporal.translation_pixels: 0

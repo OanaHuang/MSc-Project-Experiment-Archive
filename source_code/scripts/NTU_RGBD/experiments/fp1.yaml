@@ -1,0 +1,7 @@
+id: fp1
+name: SpikePose-NTU-FP1-RepeatedCurrent
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: cf6
+description: Four-step repeated-current compute control without historical information
+changes: {}

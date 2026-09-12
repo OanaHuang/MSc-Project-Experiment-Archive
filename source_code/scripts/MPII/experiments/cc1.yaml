@@ -1,0 +1,11 @@
+id: cc1
+name: SpikePose-E9-CoordinateClassification-K1
+dataset_scope: mpii
+category: coordinate_classification
+parent: resformer_fpn
+description: Replace only the best E-series heatmap head with SimCC at one bin per input pixel
+changes:
+  model.head.kind: coordinate_classification
+  model.head.coordinate_size: 256
+  model.head.split_ratio: 1
+  model.head.label_sigma: 2.0

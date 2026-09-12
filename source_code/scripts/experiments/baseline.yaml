@@ -1,0 +1,35 @@
+id: baseline
+name: SpikePose
+legacy_reference: B0
+category: baseline
+training_profile: pose_ablation
+description: Exact B0 topology from the legacy ablation framework
+model:
+  in_channels: 3
+  num_steps: 2
+  temporal:
+    input_strategy: repeat
+    aggregation: mean
+    translation_pixels: 0
+    randomize_training: true
+  neuron:
+    kind: ilif
+    decay: 0.90
+    threshold: 1.0
+    max_spikes: 4
+  backbone:
+    channels: [64, 128, 256]
+    depths: [1, 2, 2]
+    blocks: [all_conv, all_conv, conv]
+    output_stages: [2, 3]
+  neck:
+    kind: concat
+    out_channels: 128
+    interpolation: nearest
+    align_corners: false
+  head:
+    kind: ann_heatmap
+    hidden_channels: 128
+    upsample_factor: 2
+    output_init: kaiming
+    output_init_std: 0.001

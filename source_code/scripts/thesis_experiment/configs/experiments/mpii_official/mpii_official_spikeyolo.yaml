@@ -1,0 +1,8 @@
+id: mpii_official_spikeyolo
+paper_id: MPII-Official-SpikeYOLO
+stage: mpii_official_backbone
+model_config: spikeyolo
+protocol: mpii_official_confirm140
+implementation_status: ready
+initialization: {mode: scratch}
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: repeat_current, state_policy: reset, readout: mean}

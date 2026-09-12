@@ -1,0 +1,25 @@
+model:
+  family: spikeyolo
+  variant: s_p3_t1_d4
+  num_joints: 16
+  in_channels: 3
+  num_steps: 1
+  heatmap_size: [64, 64]
+  backbone:
+    source_config: upstream:snn_yolov8.yaml@dc51f35
+    scale: s
+    keep_layers: [0, 19]
+    feature_layer: 19
+    feature_channels: 128
+    feature_stride: 8
+  temporal:
+    input_strategy: repeat
+    aggregation: mean
+    state_mode: reset
+    snn_steps_per_frame: 1
+  head:
+    kind: linear_heatmap
+    hidden_channels: 128
+    upsample_factor: 1
+    output_init: small_normal
+    output_init_std: 0.001

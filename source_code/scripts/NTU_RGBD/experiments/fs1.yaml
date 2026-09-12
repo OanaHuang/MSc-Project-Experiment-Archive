@@ -1,0 +1,8 @@
+id: fs1
+name: SpikePose-NTU-FS1-F1-SmoothNet
+category: f_smoothnet
+source_experiment: f1
+window_size: 32
+epochs: 50
+primary_metric: PCKhn@0.5
+temporal_metrics: [NAccE, Accel, NAccel]

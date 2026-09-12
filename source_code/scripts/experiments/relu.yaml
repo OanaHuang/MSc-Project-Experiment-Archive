@@ -1,0 +1,9 @@
+id: relu
+name: SpikePose-ReLU
+legacy_reference: N0
+category: neuron
+parent: stage123
+description: Replace spiking neurons with ReLU activations
+changes:
+  model.num_steps: 1
+  model.neuron.kind: relu

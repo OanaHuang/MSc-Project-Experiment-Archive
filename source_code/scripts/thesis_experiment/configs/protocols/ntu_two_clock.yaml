@@ -1,0 +1,10 @@
+extends: ntu_cs80
+training:
+  epochs: 30
+  batch_size: 16
+  clip_batch_size: 16
+  learning_rate: 0.0001
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 2
+    min_lr: 0.000001

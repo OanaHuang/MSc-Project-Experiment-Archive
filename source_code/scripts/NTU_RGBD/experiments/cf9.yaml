@@ -1,0 +1,14 @@
+id: cf9
+name: SpikePose-NTU-CF9-HistoryOnlyForecast
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: mem_fpn
+description: Forecast the current pose from history only, without current-frame pixels
+changes:
+  model.neck.kind: spike_fpn_temporal
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: joint_temporal
+  model.temporal.history_mode: history_only
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

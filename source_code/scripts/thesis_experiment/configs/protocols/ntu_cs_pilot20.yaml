@@ -1,0 +1,9 @@
+extends: ntu_cs80
+training:
+  epochs: 20
+  milestone_epochs: [10, 20]
+  seeds: [42]
+  batch_size: 128
+  gradient_accumulation: 1
+  mixed_precision: true
+  checkpoint_interval: 5

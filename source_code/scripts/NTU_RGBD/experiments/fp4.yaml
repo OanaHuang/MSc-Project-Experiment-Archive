@@ -1,0 +1,7 @@
+id: fp4
+name: SpikePose-NTU-FP4-JointAlignedTemporal
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: cf10
+description: Four-frame joint-wise fusion after soft-coordinate heatmap alignment
+changes: {}

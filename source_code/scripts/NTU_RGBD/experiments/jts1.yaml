@@ -1,0 +1,13 @@
+id: jts1
+name: SpikePose-NTU-JTS1-Repeat4
+dataset_scope: ntu_rgbd
+category: joint_timestep
+parent: t0
+description: Four repeated-current SNN timesteps without video history
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: repeat
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

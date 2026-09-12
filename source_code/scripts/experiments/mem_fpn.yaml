@@ -1,0 +1,9 @@
+id: mem_fpn
+name: SpikePose-Mem-FPN
+legacy_reference: b1_r3/bf_membrane
+category: residual
+parent: mem_spikefpn_annhead
+description: Exact shared topology of legacy b1_r3 and bf_membrane; isolates the linear head from the ANN-head Spike-FPN parent
+training_profile: residual_bf
+changes:
+  model.head.kind: linear_heatmap

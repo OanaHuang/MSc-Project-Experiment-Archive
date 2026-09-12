@@ -1,0 +1,8 @@
+id: cf12
+name: SpikePose-NTU-CF12-AlignedMotionGate
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: cf10
+description: Joint alignment followed by motion-adaptive temporal weighting
+changes:
+  model.temporal.aggregation: joint_aligned_motion_temporal

@@ -1,0 +1,7 @@
+id: m0
+name: SpikePose-NTU-M0-CurrentFrame
+dataset_scope: ntu_rgbd
+category: motion_trend
+parent: t0
+description: Current-frame reference on the shared four-frame-eligible population
+changes: {}

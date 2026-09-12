@@ -1,0 +1,104 @@
+id: pilot20_mamv2_kpa
+paper_id: Pilot20-NTU-MAMV2-KPA
+stage: mam_ktp_pilot
+run_type: pilot
+profile: pilot20
+priority: pilot
+model_config: s3_sp_a4
+protocol: ntu_cs_mam20
+
+initialization:
+  mode: checkpoint
+  source: mamv2_fullcs_p00_source
+  match_seed: true
+  load: spatial_weights_only
+
+model:
+  temporal:
+    memory_kind: mam_v2
+    memory_decay_min: 0.02
+    memory_decay_max: 0.95
+    memory_decay: 0.08
+    memory_residual_gamma_init: 0.0
+    memory_max_residual_offset_px: 2.0
+    memory_align_corners: false
+    memory_padding_mode: border
+    memory_use_current_direct_path: true
+    memory_use_residual_offset: true
+    memory_use_dynamic_gate: true
+    memory_use_predictive_head: false
+    memory_shared_decay: false
+    memory_bptt_mode: full16
+    memory_detach_interval: 0
+    memory_offset_hidden_features: 64
+    memory_joint_embedding_features: 8
+    memory_use_kpa: true
+    memory_use_tpa: false
+    memory_ktp_causal: true
+    memory_ktp_global_init: 0.000001
+
+training:
+  mam_diagnostic_batches: 1
+  phases:
+    - name: alignment_pretrain
+      start_epoch: 1
+      end_epoch: 5
+      train_modules: [mam.offset_head, mam.joint_embedding, mam.ktp_prior]
+      freeze_batch_norm: true
+      learning_rates:
+        mam.offset_head: 0.0002
+        mam.joint_embedding: 0.0002
+        mam.ktp_prior: 0.0002
+    - name: memory_warmup
+      start_epoch: 6
+      end_epoch: 10
+      train_modules:
+        - mam.offset_head
+        - mam.joint_embedding
+        - mam.ktp_prior
+        - mam.gate_head
+        - mam.gamma_parameter
+      freeze_batch_norm: true
+      learning_rates:
+        mam.offset_head: 0.0002
+        mam.joint_embedding: 0.0002
+        mam.ktp_prior: 0.0002
+        mam.gate_head: 0.0002
+        mam.gamma_parameter: 0.0002
+    - name: partial_finetune
+      start_epoch: 11
+      end_epoch: 20
+      train_modules:
+        - mam.offset_head
+        - mam.joint_embedding
+        - mam.ktp_prior
+        - mam.gate_head
+        - mam.gamma_parameter
+        - neck
+        - head
+        - backbone.downsamples.3
+        - backbone.stages.3
+      freeze_batch_norm: true
+      learning_rates:
+        mam.offset_head: 0.0002
+        mam.joint_embedding: 0.0002
+        mam.ktp_prior: 0.0002
+        mam.gate_head: 0.0002
+        mam.gamma_parameter: 0.0002
+        neck: 0.00005
+        head: 0.00005
+        backbone.downsamples.3: 0.00001
+        backbone.stages.3: 0.00001
+  loss_schedule:
+    offset: {start_epoch: 1, weight: 0.01}
+    prediction: {start_epoch: 99, weight: 0.0}
+    velocity: {start_epoch: 99, weight: 0.0}
+    acceleration: {start_epoch: 99, weight: 0.0}
+    magnitude: {start_epoch: 99, weight: 0.0}
+
+temporal:
+  video_frames: 16
+  snn_updates_per_frame: 1
+  input_mode: stream
+  state_policy: continuous
+  readout: last

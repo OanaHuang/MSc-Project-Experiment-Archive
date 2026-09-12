@@ -1,0 +1,17 @@
+training:
+  epochs: 20
+  batch_size: 16
+  num_workers: 4
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  gradient_clip: null
+  deterministic_workers: true
+  scheduler:
+    kind: plateau
+    factor: 0.5
+    patience: 8
+    min_lr: 0.000001
+  augmentation:
+    scale_range: null
+    rotation_degrees: 0.0
+  seed: 42

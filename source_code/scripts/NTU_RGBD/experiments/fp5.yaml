@@ -1,0 +1,7 @@
+id: fp5
+name: SpikePose-NTU-FP5-AlignedConfidenceGate
+dataset_scope: ntu_rgbd
+category: for_paper
+parent: cf13
+description: Aligned four-frame fusion with per-joint heatmap-confidence weighting
+changes: {}

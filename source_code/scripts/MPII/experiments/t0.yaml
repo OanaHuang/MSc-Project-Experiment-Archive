@@ -1,0 +1,7 @@
+id: t0
+name: SpikePose-E0-T2-Repeat-Mean
+dataset_scope: mpii
+legacy_reference: E0 temporal baseline
+category: temporal
+parent: e0
+description: Exact E0 temporal behaviour with two repeated steps and mean aggregation

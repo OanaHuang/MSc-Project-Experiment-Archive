@@ -1,0 +1,53 @@
+id: heatmap_decoding_v1
+category: heatmap_decoding
+batch_name: heatmap_v1
+reference: argmax
+official_variant: flip_quarter
+cache_dtype: float16
+
+variants:
+  - id: argmax
+    decoder: argmax
+
+  - id: quarter
+    decoder: quarter
+
+  - id: dark
+    decoder: dark
+    dark_kernel: 11
+
+  - id: argmax_udp
+    decoder: argmax
+    udp: true
+
+  - id: dark_udp
+    decoder: dark
+    udp: true
+    dark_kernel: 11
+
+  - id: flip_argmax_no_shift
+    decoder: argmax
+    flip_test: true
+
+  - id: flip_argmax
+    decoder: argmax
+    flip_test: true
+    flip_shift: true
+
+  - id: flip_quarter
+    decoder: quarter
+    flip_test: true
+    flip_shift: true
+
+  - id: flip_dark
+    decoder: dark
+    dark_kernel: 11
+    flip_test: true
+    flip_shift: true
+
+  - id: flip_dark_udp
+    decoder: dark
+    udp: true
+    dark_kernel: 11
+    flip_test: true
+    flip_shift: true

@@ -1,0 +1,3 @@
+extends: ntu_cs_mam_confirm140
+training:
+  seeds: [42]

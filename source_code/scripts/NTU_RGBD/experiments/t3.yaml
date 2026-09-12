@@ -1,0 +1,38 @@
+id: t3
+name: SpikePose-NTU-E6-T3-DecoupledSpaceTime
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: mem_fpn
+description: Joint-wise causal temporal aggregation followed by separate NTU skeleton refinement
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: joint_temporal_spatial
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0
+  model.temporal.feedback_edges:
+    - [0, 1]
+    - [1, 20]
+    - [20, 2]
+    - [2, 3]
+    - [20, 4]
+    - [4, 5]
+    - [5, 6]
+    - [6, 7]
+    - [7, 21]
+    - [7, 22]
+    - [20, 8]
+    - [8, 9]
+    - [9, 10]
+    - [10, 11]
+    - [11, 23]
+    - [11, 24]
+    - [0, 12]
+    - [12, 13]
+    - [13, 14]
+    - [14, 15]
+    - [0, 16]
+    - [16, 17]
+    - [17, 18]
+    - [18, 19]

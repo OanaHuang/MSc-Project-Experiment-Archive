@@ -1,0 +1,39 @@
+id: pilot8_ntu25_hrnet_w32
+paper_id: Pilot8-NTU25-HRNet-W32
+stage: ntu25_preview
+run_type: pilot
+profile: ntu25_preview8
+priority: pilot
+model_config: hrnet_w32
+protocol: ntu25_preview8
+
+initialization:
+  mode: checkpoint
+  source: pilot20_ntu_hrnet_w32
+  match_seed: true
+  load: mpii16_to_ntu25
+  # The parent run was deliberately stopped after epoch 17 and its best.pt was
+  # declared final for this reporting cycle. The fingerprint is still captured
+  # in lineage.json so this exception remains fully auditable.
+  allow_incomplete_source: true
+
+model:
+  num_joints: 25
+
+training:
+  batch_size: 128
+  num_workers: 4
+  phases:
+    - name: ntu25_head_adaptation
+      start_epoch: 1
+      end_epoch: 3
+      train_modules: [final_layer]
+      freeze_batch_norm: true
+      learning_rates: {final_layer: 0.001}
+
+temporal:
+  video_frames: 1
+  snn_updates_per_frame: 1
+  input_mode: repeat_current
+  state_policy: reset
+  readout: last

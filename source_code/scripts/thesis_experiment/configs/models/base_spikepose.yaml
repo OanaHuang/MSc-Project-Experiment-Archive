@@ -1,0 +1,36 @@
+model:
+  in_channels: 3
+  num_joints: 16
+  num_steps: 2
+  heatmap_size: [64, 64]
+  temporal:
+    input_strategy: repeat
+    aggregation: mean
+    history_mode: real
+    state_mode: reset
+    translation_pixels: 0
+    randomize_training: false
+    snn_steps_per_frame: 2
+    decouple_video_time: false
+  neuron:
+    kind: ilif
+    decay: 0.9
+    threshold: 1.0
+    max_spikes: 4
+  backbone:
+    channels: [64, 128, 256, 256]
+    depths: [1, 2, 2, 2]
+    blocks: [all_conv, membrane, membrane, membrane]
+    output_stages: [1, 2, 3, 4]
+    attention_stages: []
+  neck:
+    kind: spike_fpn
+    out_channels: 128
+    interpolation: bilinear
+    align_corners: false
+  head:
+    kind: linear_heatmap
+    hidden_channels: 128
+    upsample_factor: 1
+    output_init: small_normal
+    output_init_std: 0.001

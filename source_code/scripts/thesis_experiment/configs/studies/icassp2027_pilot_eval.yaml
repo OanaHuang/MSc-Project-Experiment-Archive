@@ -1,0 +1,11 @@
+id: icassp2027_pilot_eval
+profile: pilot20
+description: Pilot controls plus classical and trained causal temporal refinements.
+experiments:
+  - pilot20_control_v1u1
+  - pilot20_control_v1u2
+  - pilot20_control_v2u2
+  - pilot20_eval_ema_shared
+  - pilot20_refine_jointwise
+  - pilot20_eval_sg_causal
+  - pilot20_eval_one_euro

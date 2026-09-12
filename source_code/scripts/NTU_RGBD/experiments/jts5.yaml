@@ -1,0 +1,13 @@
+id: jts5
+name: SpikePose-NTU-JTS5-Uniform2222
+dataset_scope: ntu_rgbd
+category: joint_timestep
+parent: t0
+description: Uniform two-step repeated-current SNN compute-budget control
+changes:
+  model.num_steps: 2
+  model.temporal.input_strategy: repeat
+  model.temporal.aggregation: mean
+  model.temporal.history_mode: real
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

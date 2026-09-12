@@ -1,0 +1,12 @@
+id: confirm140_ntu_hrnet_w32
+paper_id: Confirm140-NTU-HRNet-W32
+stage: paper_baseline
+model_config: hrnet_w32
+protocol: ntu_cs_confirm140
+initialization:
+  mode: official_checkpoint
+  path: Datasets/MPII/official_simplebaseline/pose_hrnet_w32_256x256.pth
+  format: official_hrnet
+training:
+  learning_rate: 0.0001
+temporal: {video_frames: 1, snn_updates_per_frame: 1, input_mode: repeat_current, state_policy: reset, readout: last}

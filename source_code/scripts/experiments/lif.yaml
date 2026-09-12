@@ -1,0 +1,9 @@
+id: lif
+name: SpikePose-LIF
+legacy_reference: N1
+category: neuron
+parent: stage123
+description: Exact legacy N1 binary I-LIF configuration
+changes:
+  model.neuron.kind: ilif
+  model.neuron.max_spikes: 1

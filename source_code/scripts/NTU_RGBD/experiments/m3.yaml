@@ -1,0 +1,8 @@
+id: m3
+name: SpikePose-NTU-M3-GatedMotionTrend
+dataset_scope: ntu_rgbd
+category: motion_trend
+parent: m2
+description: History-only motion forecast with learned per-joint current-evidence gate
+changes:
+  model.temporal.aggregation: motion_trend_gated

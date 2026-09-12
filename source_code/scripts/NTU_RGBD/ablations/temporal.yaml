@@ -1,0 +1,5 @@
+id: temporal
+title: NTU DSTA-inspired causal joint-wise temporal ablation
+dataset_scope: ntu_rgbd
+reference: t0
+experiments: [t0, t1, t2, t3, t4, t5]

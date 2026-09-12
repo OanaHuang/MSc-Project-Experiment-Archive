@@ -1,0 +1,10 @@
+id: stage12
+name: SpikePose-Stage12
+legacy_reference: B3
+category: structure
+parent: baseline
+description: Exact legacy B3 stage-1-and-2 ablation
+changes:
+  model.backbone.output_stages: [1, 2]
+  model.head.upsample_factor: 1
+  model.head.output_init: small_normal

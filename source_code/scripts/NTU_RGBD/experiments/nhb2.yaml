@@ -1,0 +1,12 @@
+id: nhb2
+name: NTU-NHB2-PoseResNet50-MPIIPretrained
+dataset_scope: ntu_rgbd
+category: external_baselines
+parent: nhb1
+description: Pose-ResNet-50 initialized from official MPII tensors and trained on NTU RGB+D
+changes:
+  model.pretrained:
+    source_experiment: hb0
+    checkpoint: Datasets/MPII/official_simplebaseline/pose_resnet_50_256x256.pth.tar
+    checkpoint_tensor_sha256: a770916591d97d62ec38fdc044ffb032ef05c2f9aa0601f18de7b08cff9ced2e
+

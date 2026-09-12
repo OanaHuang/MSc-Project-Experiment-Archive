@@ -1,0 +1,17 @@
+training:
+  epochs: 20
+  batch_size: 16
+  num_workers: 4
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 5.0
+  deterministic_workers: true
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 2
+    min_lr: 0.000001
+  augmentation:
+    scale_range: [0.75, 1.25]
+    rotation_degrees: 30.0
+    flip_probability: 0.0
+  seed: 42

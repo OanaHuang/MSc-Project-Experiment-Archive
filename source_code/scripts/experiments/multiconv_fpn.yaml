@@ -1,0 +1,8 @@
+id: multiconv_fpn
+name: SpikePose-MultiConv-FPN
+legacy_reference: bf_multicnn
+category: backbone_fpn
+parent: mem_fpn
+description: Multi-convolution blocks with spike-domain FPN
+changes:
+  model.backbone.blocks: [all_conv, multi_conv, multi_conv, multi_conv]

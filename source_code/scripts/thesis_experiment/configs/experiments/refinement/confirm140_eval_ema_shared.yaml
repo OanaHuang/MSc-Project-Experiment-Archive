@@ -1,0 +1,13 @@
+id: confirm140_eval_ema_shared
+paper_id: Confirm140-Eval-EMA-Shared
+stage: paper_refinement
+action: refinement
+model_config: s3_sp_a4
+protocol: jtr_training
+initialization: {mode: checkpoint, source: confirm140_ntu_spikepose_frame, match_seed: true, load: predictions}
+training: {epochs: 0}
+refinement:
+  method: ema_shared
+  causal: true
+  look_ahead: 0
+  validation_grid: {alpha: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]}

@@ -1,0 +1,24 @@
+id: mam_softmax_fix_softmax
+paper_id: MAM-Softmax-Fix-softmax-full-Frozen20
+stage: mam_softmax_fix
+run_type: pilot
+priority: pilot
+model_config: s3_sp_a4
+protocol: mam_softmax_fix_frozen20
+initialization:
+  mode: checkpoint
+  source: mamv2_fullcs_p00_source
+  match_seed: true
+  load: spatial_weights_only
+mam_softmax_fix:
+  method: softmax
+  beta: 1.0
+  alpha: 1.0
+  min_mass: 1.0e-8
+  dark_kernel: 11
+temporal:
+  video_frames: 16
+  snn_updates_per_frame: 1
+  input_mode: stream
+  state_policy: continuous
+  readout: last

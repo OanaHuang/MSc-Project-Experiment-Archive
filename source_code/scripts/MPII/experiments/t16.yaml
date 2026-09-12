@@ -1,0 +1,10 @@
+id: t16
+name: SpikePose-E0-T2-HeatmapFeedback-NoResidual
+dataset_scope: mpii
+legacy_reference: E0 heatmap-feedback non-residual control
+category: temporal
+parent: e0
+description: Use first-step heatmap feedback without accumulating its prediction
+changes:
+  model.temporal.aggregation: heatmap_feedback_no_residual
+  model.temporal.intermediate_loss_weight: 0.5

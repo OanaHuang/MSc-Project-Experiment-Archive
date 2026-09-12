@@ -1,0 +1,29 @@
+extends: ntu_cs80
+data:
+  # Keep the established Pilot20 CS metadata/cache; only the output layout
+  # changes from the MPII-compatible subset to the native Kinect V2 skeleton.
+  joint_mapping: ntu25_identity_v1
+training:
+  epochs: 8
+  milestone_epochs: [3, 8]
+  seeds: [42]
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  gradient_accumulation: 1
+  mixed_precision: true
+  deterministic_workers: true
+  target_heatmap_backend: gpu
+  single_pass_validation: true
+  firing_rate_batches: 1
+  progress_interval: 100
+  checkpoint_interval: 1
+  scheduler:
+    kind: warmup_cosine
+    warmup_epochs: 2
+    min_lr: 0.000001
+  augmentation:
+    scale_range: [0.85, 1.15]
+    rotation_degrees: 15.0
+    flip_probability: 0.5

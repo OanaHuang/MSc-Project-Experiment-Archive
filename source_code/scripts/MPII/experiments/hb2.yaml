@@ -1,0 +1,32 @@
+id: hb2
+name: MPII-HB2-HRNetW48-Official
+dataset_scope: mpii
+category: external_baselines
+protocol: official_hrnet_mpii
+checkpoint: Datasets/MPII/official_simplebaseline/pose_hrnet_w48_256x256.pth
+official_reference:
+  repository: https://github.com/open-mmlab/mmpose
+  config: configs/body_2d_keypoint/topdown_heatmap/mpii/td-hm_hrnet-w48_8xb64-210e_mpii-256x256.py
+  checkpoint_url: https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_mpii_256x256-92cab7bd_20200812.pth
+  reported_pckh: 0.901
+  checkpoint_tensor_sha256: a2d6dfdd4aab8901147f680ab8ca19328108002062e721d2311140e4f8767985
+  training_epochs: 210
+  optimizer: adam
+  learning_rate: 0.001
+  learning_rate_steps: [170, 200]
+  weight_decay: 0.0001
+  batch_size_per_gpu: 32
+  test_flip: true
+  test_post_process: true
+  test_shift_heatmap: true
+model:
+  family: hrnet
+  width: 48
+  num_joints: 16
+data:
+  images_dir: Datasets/MPII/images
+  validation_metadata: Datasets/MPII/metadata/official_hrnet/val.jsonl
+  image_size: 256
+  heatmap_size: 64
+  sigma: 2.0
+  color_rgb: true

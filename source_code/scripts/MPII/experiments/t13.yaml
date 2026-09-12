@@ -1,0 +1,10 @@
+id: t13
+name: SpikePose-E0-T2-ResidualRefinement
+dataset_scope: mpii
+legacy_reference: E0 temporal residual-refinement control
+category: temporal
+parent: e0
+description: Accumulate shared-head heatmap corrections without prediction feedback
+changes:
+  model.temporal.aggregation: residual_refinement
+  model.temporal.intermediate_loss_weight: 0.5

@@ -1,0 +1,9 @@
+id: mam_softmax_fix
+description: Response-heatmap decoding repair; validation-only Pilot20 with frozen spatial weights.
+experiments:
+  - mam_softmax_fix_softmax
+  - mam_softmax_fix_scaled10
+  - mam_softmax_fix_relu
+  - mam_softmax_fix_power2
+  - mam_softmax_fix_expm1
+  - mam_softmax_fix_dark

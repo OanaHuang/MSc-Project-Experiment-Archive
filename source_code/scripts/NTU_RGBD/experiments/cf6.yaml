@@ -1,0 +1,13 @@
+id: cf6
+name: SpikePose-NTU-CF6-Repeat4
+dataset_scope: ntu_rgbd
+category: cross_frame_state
+parent: mem_fpn
+description: Four-step repeated-current control matched to the four-frame models
+changes:
+  model.num_steps: 4
+  model.temporal.input_strategy: frames
+  model.temporal.aggregation: joint_temporal
+  model.temporal.history_mode: repeat_current
+  model.temporal.state_mode: continuous
+  model.temporal.translation_pixels: 0

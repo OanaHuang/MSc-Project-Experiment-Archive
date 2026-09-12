@@ -1,0 +1,6 @@
+id: spikepose_ann_mam_pilot20
+description: Dependency catalog for the seed-42 SpikePose-ANN plus Core MAM Pilot20 comparison.
+experiments:
+  - mpii_official_spikepose_ann
+  - pilot20_ntu_spikepose_ann
+  - pilot20_ntu_spikepose_ann_mam

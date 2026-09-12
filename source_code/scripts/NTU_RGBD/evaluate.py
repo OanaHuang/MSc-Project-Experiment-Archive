@@ -1,0 +1,42 @@
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+import sys
+
+import torch
+from torch.utils.data import DataLoader
+import yaml
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from scripts.NTU_RGBD.datasets import build_dataset
+from scripts.NTU_RGBD.evaluation import evaluate
+from scripts.spikepose.analysis import profile_theoretical
+from scripts.spikepose.models import build_model
+from scripts.spikepose.training import load_model
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Evaluate an NTU RGB+D run")
+    parser.add_argument("--run", type=Path, required=True)
+    parser.add_argument("--device", default="cuda:0" if torch.cuda.is_available() else "cpu")
+    args = parser.parse_args()
+    config = yaml.safe_load((args.run / "config" / "resolved.yaml").read_text())
+    dataset = build_dataset(PROJECT_ROOT, config, "validation")
+    loader = DataLoader(dataset, batch_size=config["training"]["batch_size"], shuffle=False)
+    device = torch.device(args.device)
+    model = build_model(config).to(device)
+    load_model(args.run / "checkpoints" / "best.pt", model, device)
+    analysis_image = next(iter(loader))["image"][:1].to(device)
+    profile_theoretical(
+        model, analysis_image,
+        args.run / "analysis" / "theoretical_energy.json",
+    )
+    print(evaluate(model, loader, dataset, device, args.run / "metrics"))
+
+
+if __name__ == "__main__":
+    main()
