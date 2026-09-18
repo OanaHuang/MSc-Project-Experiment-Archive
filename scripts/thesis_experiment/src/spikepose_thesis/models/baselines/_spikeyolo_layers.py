@@ -149,7 +149,7 @@ class RepConv(nn.Module):
         bn = BNAndPadLayer(pad_pixels=padding, num_features=in_channel)
         conv3x3 = nn.Sequential(
             # mem_update(), #11111
-            nn.Conv2d(in_channel, in_channel, kernel_size, 1,0, groups=in_channel, bias=False),  #这里也是分组卷积
+            nn.Conv2d(in_channel, in_channel, kernel_size, 1,0, groups=in_channel, bias=False),  # grouped convolution here as well
             # mem_update(),  #11111
             nn.Conv2d(in_channel, out_channel, 1,  1,0, groups=group, bias=False),
             nn.BatchNorm2d(out_channel),
@@ -175,7 +175,7 @@ class SepRepConv(nn.Module):
         # hidden_channel = in_channel
         bn = BNAndPadLayer(pad_pixels=padding, num_features=in_channel)
         conv3x3 = nn.Sequential(
-            nn.Conv2d(in_channel, out_channel, 1, 1,0, groups=group, bias=False),  #这里也是分组卷积
+            nn.Conv2d(in_channel, out_channel, 1, 1,0, groups=group, bias=False),  # grouped convolution here as well
             # mem_update(), #11111
             nn.Conv2d(out_channel, out_channel, kernel_size,  1,0, groups=out_channel, bias=False),
         )
@@ -207,7 +207,7 @@ class SepConv(nn.Module):
             med_channels, med_channels, kernel_size=kernel_size, #7*7
             padding=padding, groups=med_channels, bias=bias)  # depthwise conv
 #         self.pwconv3 = nn.Conv2d(med_channels, dim, kernel_size=1, stride=1, bias=bias,groups=1)
-        self.pwconv3=SepRepConv(med_channels, dim)  #这里将sepconv最后一个卷积替换为重参数化卷积  大概提0.5个点，可以保留
+        self.pwconv3=SepRepConv(med_channels, dim)  # replace the final SepConv layer with a reparameterized convolution; retained after an approximately 0.5-point gain
 
         self.bn1 = nn.BatchNorm2d(med_channels)
         self.bn2 = nn.BatchNorm2d(med_channels)
@@ -221,8 +221,8 @@ class SepConv(nn.Module):
     def forward(self, x):
         T, B, C, H, W = x.shape
 #         print("x.shape:",x.shape)
-        x = self.lif1(x) #x1_lif:0.2328  x2_lif:0.0493  这里x2的均值偏小，因此其经过bn和lif后也偏小，发放率比较低；而x1均值偏大，因此发放率也高
-        x = self.bn1(self.pwconv1(x.flatten(0, 1))).reshape(T, B, -1, H, W)  # flatten：从第0维开始，展开到第一维
+        x = self.lif1(x) # x1_lif:0.2328  x2_lif:0.0493; the smaller x2 mean remains small after BN and LIF, producing a lower firing rate, while the larger x1 mean produces a higher firing rate
+        x = self.bn1(self.pwconv1(x.flatten(0, 1))).reshape(T, B, -1, H, W)  # flatten dimensions 0 through 1
         x = self.lif2(x)
         x = self.bn2(self.dwconv2(x.flatten(0, 1))).reshape(T, B, -1, H, W)
         x = self.lif3(x)
@@ -231,22 +231,22 @@ class SepConv(nn.Module):
 
 
 class MS_ConvBlock(nn.Module):
-    def __init__(self, input_dim, mlp_ratio=4.,sep_kernel_size = 7 ,full=False):  # in_channels(out_channels), 内部扩张比例
+    def __init__(self, input_dim, mlp_ratio=4.,sep_kernel_size = 7 ,full=False):  # in_channels(out_channels), internal expansion ratio
         super().__init__()
 
         self.full =full
-        self.Conv = SepConv(dim=input_dim,kernel_size= sep_kernel_size)  #内部扩张2倍
+        self.Conv = SepConv(dim=input_dim,kernel_size= sep_kernel_size)  # 2x internal expansion
         self.mlp_ratio = mlp_ratio
 
         self.lif1 = mem_update()
         self.lif2 = mem_update()
 
-        self.conv1 = RepConv(input_dim, int(input_dim * mlp_ratio)) #137以外的模型，在第一个block不做分组
+        self.conv1 = RepConv(input_dim, int(input_dim * mlp_ratio)) # models other than 137 do not group the first block
 
-        self.bn1 = nn.BatchNorm2d(int(input_dim * mlp_ratio))  # 这里可以进行改进
+        self.bn1 = nn.BatchNorm2d(int(input_dim * mlp_ratio))  # possible improvement point
 
         self.conv2 = RepConv(int(input_dim * mlp_ratio), input_dim)
-        self.bn2 = nn.BatchNorm2d(input_dim)  # 这里可以进行改进
+        self.bn2 = nn.BatchNorm2d(input_dim)  # possible improvement point
 
 
 
@@ -259,7 +259,7 @@ class MS_ConvBlock(nn.Module):
         x_feat = x
 
         x = self.bn1(self.conv1(self.lif1(x).flatten(0, 1))).reshape(T, B, int(self.mlp_ratio * C), H, W)
-            #repconv，对应conv_mixer，包含1*1,3*3,1*1三个卷积，等价于一个3*3卷积
+            # RepConv corresponds to ConvMixer and contains 1x1, 3x3, and 1x1 convolutions equivalent to one 3x3 convolution
         x = self.bn2(self.conv2(self.lif2(x).flatten(0, 1))).reshape(T, B, C, H, W)
         x = x_feat + x
 
@@ -267,7 +267,7 @@ class MS_ConvBlock(nn.Module):
 
 
 class MS_AllConvBlock(nn.Module):  # standard conv
-    def __init__(self, input_dim, mlp_ratio=4.,sep_kernel_size = 7 ,group=False):  # in_channels(out_channels), 内部扩张比例
+    def __init__(self, input_dim, mlp_ratio=4.,sep_kernel_size = 7 ,group=False):  # in_channels(out_channels), internal expansion ratio
         super().__init__()
 
         self.Conv = SepConv(dim=input_dim,kernel_size= sep_kernel_size)
@@ -293,7 +293,7 @@ class MS_AllConvBlock(nn.Module):  # standard conv
 
 
 class MS_StandardConv(nn.Module):
-    def __init__(self, c1, c2, k=1, s=1, p=None, g=1, d=1):  # in_channels(out_channels), 内部扩张比例
+    def __init__(self, c1, c2, k=1, s=1, p=None, g=1, d=1):  # in_channels(out_channels), internal expansion ratio
         super().__init__()
         self.c1 = c1
         self.c2 = c2
@@ -322,7 +322,7 @@ class MS_DownSampling(nn.Module):
         T, B, _, _, _ = x.shape
 
 
-        if hasattr(self, "encode_lif"): #如果不是第一层
+        if hasattr(self, "encode_lif"): # not the first layer
             # x_pool = self.pool(x)
             x = self.encode_lif(x)
 

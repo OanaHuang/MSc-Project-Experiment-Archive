@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-project=/extra2/yunhao/MSc_Project
+project="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
 dataset="$project/Datasets/NTU_RGBD"
-archives=/extra2/yunhao/ntu60_archives
+archives="${NTU_ARCHIVE_ROOT:-$project/Datasets/NTU_RGBD/archives}"
 python="$project/.venv/bin/python"
 default_setups=(S003 S004 S005 S006 S007 S008 S009 S011 S012 S013 S014 S015 S016 S017)
 if [ "$#" -gt 0 ]; then

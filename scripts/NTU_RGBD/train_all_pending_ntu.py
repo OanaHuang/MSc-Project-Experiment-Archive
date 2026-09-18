@@ -6,7 +6,7 @@ import subprocess
 import time
 
 
-ROOT = Path("/extra2/yunhao/MSc_Project")
+ROOT = Path(__file__).resolve().parents[2]
 PYTHON = ROOT / ".venv/bin/python"
 OUTPUT = ROOT / "Outputs_New/ntu_rgbd"
 LOGS = ROOT / "launch_logs"

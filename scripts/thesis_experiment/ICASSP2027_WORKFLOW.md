@@ -7,7 +7,8 @@ results remain useful for reproducibility and warm-start comparisons.
 
 ## Fixed rules
 
-- Use local development and `mitkof` only. Menorca results are excluded.
+- Use one controlled development environment and one designated training
+  environment. Results from other environments are excluded.
 - Pilot20 and Confirm140 write to different output roots.
 - Confirm140 starts independently. It never resumes or initializes from a
   Pilot checkpoint.
@@ -53,13 +54,14 @@ Each run records the file SHA-256 and the aligned tensor-state fingerprint in
 `lineage.json`. Loading is strict; missing or incompatible tensors stop the
 run.
 
-## Mitkof commands
+## Training-environment commands
 
-Run each dry-run first. A dry-run changes no experiment output.
+Set `PROJECT_ROOT` to the repository checkout, then run each dry-run first. A
+dry-run changes no experiment output.
 
 ```bash
-cd /extra2/yunhao/MSc_Project/scripts/thesis_experiment
-source ../../.venv/bin/activate
+cd "${PROJECT_ROOT}/scripts/thesis_experiment"
+source "${PROJECT_ROOT}/.venv/bin/activate"
 export PYTHONPATH=src
 
 python -m spikepose_thesis validate

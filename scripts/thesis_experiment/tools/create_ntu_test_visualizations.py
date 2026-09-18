@@ -9,6 +9,7 @@ from copy import deepcopy
 import csv
 import hashlib
 import json
+import os
 from pathlib import Path
 import random
 import shutil
@@ -19,6 +20,10 @@ import zipfile
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_ARCHIVE_ROOT = Path(os.environ.get(
+    "NTU_ARCHIVE_ROOT",
+    str(PROJECT_ROOT / "Datasets/NTU_RGBD/archives"),
+))
 THESIS_SRC = PROJECT_ROOT / "scripts" / "thesis_experiment" / "src"
 if str(THESIS_SRC) not in sys.path:
     sys.path.insert(0, str(THESIS_SRC))
@@ -1028,7 +1033,7 @@ def parse_args() -> argparse.Namespace:
         default=PROJECT_ROOT / "Datasets/NTU_RGBD/metadata/contiguous_xsub/test_split.csv",
     )
     prepare_parser.add_argument(
-        "--archive-root", type=Path, default=Path("/extra2/yunhao/ntu60_archives"),
+        "--archive-root", type=Path, default=DEFAULT_ARCHIVE_ROOT,
     )
     prepare_parser.add_argument(
         "--output-root", type=Path, default=PROJECT_ROOT / "Video_Visualization",

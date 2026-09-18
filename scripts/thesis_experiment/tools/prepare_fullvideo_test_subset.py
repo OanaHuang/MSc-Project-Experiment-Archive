@@ -36,7 +36,10 @@ DEFAULT_OUTPUT_DIR = (
 )
 DEFAULT_FULL_ROOT = PROJECT_ROOT / "Datasets/NTU_RGBD/extracted_frames_full"
 DEFAULT_SAMPLED_ROOT = PROJECT_ROOT / "Datasets/NTU_RGBD/frames"
-DEFAULT_ARCHIVE_ROOT = Path("/extra2/yunhao/ntu60_archives")
+DEFAULT_ARCHIVE_ROOT = Path(os.environ.get(
+    "NTU_ARCHIVE_ROOT",
+    str(PROJECT_ROOT / "Datasets/NTU_RGBD/archives"),
+))
 DEFAULT_TARGET_FRAMES = 419_968
 DEFAULT_SEED = 20_260_826
 VIDEO_SUFFIX = "_rgb.avi"

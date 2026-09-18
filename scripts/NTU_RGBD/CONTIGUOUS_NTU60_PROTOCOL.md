@@ -40,8 +40,8 @@ Dataset guarantees for this route:
 - all clip frames share the same sampled geometric augmentation;
 - target frames with fewer than the configured number of tracked joints are
   excluded;
-- metadata stores project-relative skeleton paths and is portable between the
-  workstation and mitkof;
+- metadata stores project-relative skeleton paths and is portable between
+  development and training environments;
 - validation and test iteration are deterministic.
 
 The extracted frames are a deterministic dataset subset, not stochastic epoch
